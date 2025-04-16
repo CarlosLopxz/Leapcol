@@ -1,3 +1,4 @@
+const $ = (e)=> document.querySelector(e);
 // Burger menus
 document.addEventListener('DOMContentLoaded', function() {
     // open
@@ -38,3 +39,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+

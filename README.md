@@ -1,2 +1,2 @@
 # Leapcol
- Page of softwarre
+ Page of software
