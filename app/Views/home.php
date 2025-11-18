@@ -518,7 +518,112 @@
       </p>
     </div>
 
-   
+     
+  </div>
+</section>
+<section class="py-9 bg-light">
+  <div class="container">
+    <h3 class="text-center mb-11 text-secondary">Empresas que confían en nosotros</h3>
+    <div id="companiesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+     <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" class="img-fluid grayscale" alt="Empresa 1"></div>
+            <div class="col-2"><img src="https://msftstories.thesourcemediaassets.com/sites/61/2014/12/Microsoft_Web.png" class="img-fluid grayscale" alt="Empresa 2"></div>
+            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Amazon_2024.svg/330px-Amazon_2024.svg.png" class="img-fluid grayscale" alt="Empresa 3"></div>
+            <div class="col-2"><img src="https://img.utdstc.com/icon/031/b07/031b07c479e002248b33eb31a0d40ad4658ec533f84c444d36fe656c9f448a88:200" class="img-fluid grayscale" alt="Empresa 4"></div>
+            <div class="col-2"><img src="https://miro.medium.com/1*dDNpLKu_oTLzStsDTnkJ-g.png" class="img-fluid grayscale" alt="Empresa 5"></div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Netlify_logo_%282%29.svg/1200px-Netlify_logo_%282%29.svg.png" class="img-fluid grayscale" alt="Empresa 6"></div>
+            <div class="col-2"><img src="https://kinsta.com/wp-content/uploads/2023/05/astro-logo.png" class="img-fluid grayscale" alt="Empresa 7"></div>
+            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" class="img-fluid grayscale" alt="Empresa 8"></div>
+            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/fr/a/ac/Codeigniter.png" class="img-fluid grayscale" alt="Empresa 9"></div>
+            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png" class="img-fluid grayscale" alt="Empresa 10"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
 
 
 <?= $this->include('layouts/footer') ?>
+<?php
+// Si el controlador no pasa $products, usamos un catálogo de ejemplo
+if (!isset($products)) {
+    $products = [
+        ['id'=>1,'title'=>'Sistema de Ventas','category'=>'Ventas','desc'=>'Controla pedidos, clientes y cobros en un solo lugar.','img'=> media_url().'images/sistema-1.png','popular'=>true],
+        ['id'=>2,'title'=>'Control de Inventario','category'=>'Inventario','desc'=>'Alertas de stock y gestión de productos.','img'=> media_url().'images/sistema-2.png','popular'=>true],
+        ['id'=>3,'title'=>'Facturación Electrónica','category'=>'Facturación','desc'=>'Emite facturas legales 100% DIAN.','img'=> media_url().'images/sistema-3.png','popular'=>false],
+        ['id'=>4,'title'=>'Pedidos en Línea','category'=>'Tienda Online','desc'=>'Recibe órdenes por web y WhatsApp.','img'=> media_url().'images/sistema-4.png','popular'=>false],
+        ['id'=>5,'title'=>'Reportes Inteligentes','category'=>'Reportes','desc'=>'Análisis de ventas, ganancias y clientes.','img'=> media_url().'images/sistema-5.png','popular'=>true],
+        ['id'=>6,'title'=>'Acceso Multiplataforma','category'=>'Multiplataforma','desc'=>'PC, tablet y móvil con sincronización.','img'=> media_url().'images/sistema-6.png','popular'=>false],
+        ['id'=>7,'title'=>'Redes Sociales','category'=>'Marketing','desc'=>'Gestión y publicación en redes desde el sistema.','img'=> media_url().'images/sistema-7.png','popular'=>true],
+        // agrega más items según necesites
+    ];
+}
+$categories = array_unique(array_map(fn($p)=>$p['category'],$products));
+?>
+<section class="py-8 bg-white">
+  <div class="container">
+    <div class="mb-4 text-center">
+      <h2 class="fs-5 mb-1">Catálogo de productos</h2>
+      <p class="text-secondary fs-9 mb-3">Selecciona por categoría o mira los productos más populares.</p>
+      <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+        <a href="#" class="btn btn-sm btn-outline-secondary" data-filter="all">Todos</a>
+        <?php foreach($categories as $cat): ?>
+          <a href="#" class="btn btn-sm btn-outline-secondary" data-filter="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars($cat) ?></a>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+    <div class="row g-4" id="product-catalog">
+      <?php foreach($products as $p): ?>
+        <div class="col-12 col-md-6 col-lg-4 product-item" data-category="<?= htmlspecialchars($p['category']) ?>">
+          <div class="card h-100 shadow-sm">
+            <img src="<?= $p['img'] ?>" class="card-img-top" alt="<?= htmlspecialchars($p['title']) ?>" style="height:200px; object-fit:cover;">
+            <div class="card-body">
+              <h5 class="card-title mb-1"><?= htmlspecialchars($p['title']) ?>
+                <?php if(!empty($p['popular'])): ?>
+                  <span class="badge bg-danger ms-2">Popular</span>
+                <?php endif; ?>
+              </h5>
+              <p class="card-text text-secondary small mb-3"><?= htmlspecialchars($p['desc']) ?></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="<?= site_url('productos/view/'.$p['id']) ?>" class="btn btn-sm btn-outline-danger">Ver</a>
+                <span class="text-muted small"><?= htmlspecialchars($p['category']) ?></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="<?= site_url('productos') ?>" class="btn btn-danger">Ver catálogo completo</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-item { transition: transform .15s ease, opacity .15s ease; }
+  .product-item.hide { transform: scale(.98); opacity: .25; pointer-events: none; }
+</style>
+
+<script>
+  // Filtrado simple en cliente; mejora en controlador para catálogo grande.
+  document.querySelectorAll('[data-filter]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      const f = btn.getAttribute('data-filter');
+      document.querySelectorAll('.product-item').forEach(item=>{
+        if(f==='all' || item.dataset.category===f) item.classList.remove('hide');
+        else item.classList.add('hide');
+      });
+    });
+  });
+</script>

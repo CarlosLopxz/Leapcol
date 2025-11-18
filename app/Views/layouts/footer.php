@@ -1,34 +1,4 @@
-  
-  </div>
-</section>
-<section class="py-9 bg-light">
-  <div class="container">
-    <h3 class="text-center mb-11 text-secondary">Empresas que confían en nosotros</h3>
-    <div id="companiesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-     <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row justify-content-center align-items-center">
-            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" class="img-fluid grayscale" alt="Empresa 1"></div>
-            <div class="col-2"><img src="https://msftstories.thesourcemediaassets.com/sites/61/2014/12/Microsoft_Web.png" class="img-fluid grayscale" alt="Empresa 2"></div>
-            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Amazon_2024.svg/330px-Amazon_2024.svg.png" class="img-fluid grayscale" alt="Empresa 3"></div>
-            <div class="col-2"><img src="https://img.utdstc.com/icon/031/b07/031b07c479e002248b33eb31a0d40ad4658ec533f84c444d36fe656c9f448a88:200" class="img-fluid grayscale" alt="Empresa 4"></div>
-            <div class="col-2"><img src="https://miro.medium.com/1*dDNpLKu_oTLzStsDTnkJ-g.png" class="img-fluid grayscale" alt="Empresa 5"></div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="row justify-content-center align-items-center">
-            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Netlify_logo_%282%29.svg/1200px-Netlify_logo_%282%29.svg.png" class="img-fluid grayscale" alt="Empresa 6"></div>
-            <div class="col-2"><img src="https://kinsta.com/wp-content/uploads/2023/05/astro-logo.png" class="img-fluid grayscale" alt="Empresa 7"></div>
-            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" class="img-fluid grayscale" alt="Empresa 8"></div>
-            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/fr/a/ac/Codeigniter.png" class="img-fluid grayscale" alt="Empresa 9"></div>
-            <div class="col-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png" class="img-fluid grayscale" alt="Empresa 10"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</div>
+
 <section class="position-relative pt-20 bg-white overflow-hidden"
       style="background-image: url('euphoria-assets/elements/pattern-light.png')">
       <div class="position-absolute top-0 start-0 h-100 w-100"
