@@ -7,6 +7,6 @@ class Contacto extends BaseController
     public function index(): string
     {
         $title = 'Contacto - Leapcol';
-        return view('contacto', compact('title'));
+        return view('contacto/index', compact('title'));
     }
 }

@@ -1,6 +1,5 @@
 <?= $this->include('layouts/header') ?>
     
-    <!-- Informacion principal -->
     <div>
       <section class="position-relative bg-white overflow-hidden img-pattern"
         style="background-image: url('<?= media_url() ?>euphoria-assets/elements/pattern-light.png')">
@@ -514,6 +513,10 @@
           </a>
         </div>
       </div>
+          <p class="mt-4 mb-0 text-secondary fs-11">
+        También puedes escribir a <strong>soporte.leapcol@gmail.com</strong> o llamarnos al <strong>+57 300 123 4567</strong>
+      </p>
+    </div>
 
    
 
