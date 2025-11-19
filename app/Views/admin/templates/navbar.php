@@ -92,5 +92,11 @@
                 <span class="menu-title">Documentation</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url('/logout') ?>">
+                <i class="mdi mdi-grid-large menu-icon"></i>
+                <span class="menu-title"> Cerrar Sesión</span>
+              </a>
+            </li>
           </ul>
         </nav>
