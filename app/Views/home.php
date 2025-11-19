@@ -1,5 +1,4 @@
 <?= $this->include('layouts/header') ?>
-    
     <div>
       <section class="position-relative bg-white overflow-hidden img-pattern"
         style="background-image: url('<?= media_url() ?>euphoria-assets/elements/pattern-light.png')">

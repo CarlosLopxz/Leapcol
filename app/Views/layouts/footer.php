@@ -6,7 +6,6 @@
       <div class="position-relative container pb-12" style="z-index:1;">
         <div class="row g-16">
           <div class="col-12 col-md-8">
-            <div class="d-flex mb-6"><a href="#"><img class="img-fluid" src="<?= media_url() ?>img/Logo.png" alt="" width="250" /></a></div>
             <ul class="nav ms-n6">
               <li class="nav-item"><a class="nav-link p-6 fs-11 link-secondary-light" href="#">Productos</a></li>
               <li class="nav-item"><a class="nav-link p-6 fs-11 link-secondary-light" href="#">Prueba gratis</a></li>
@@ -38,7 +37,7 @@
       <div class="position-relative container" style="z-index: 1;">
         <div class="row align-items-center justify-content-between pt-12 pb-20 g-4">
           <div class="col-auto">
-            <p class="mb-0 fs-11 fw-medium text-center text-secondary-light">2025 - Leapcol S.A.S</p>
+            <div class="d-flex mb-6"><a href="#"><img class="img-fluid" src="<?= media_url() ?>img/Logo.png" alt="leapcol" width="150" /></a></div>
           </div>
           <div class="col-auto">
             <ul class="nav ms-n6">

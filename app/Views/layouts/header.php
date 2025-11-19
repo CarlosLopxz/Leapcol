@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:400,500,600,700,800,900&amp;subset=latin" />
     <link rel="stylesheet" href="<?= media_url() ?>css/bootstrap/bootstrap.min.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="<?= media_url() ?>img/icono.png" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -37,7 +38,7 @@
                         <div class="d-none d-lg-block">
                             <div class="row align-items-center g-6">
                                 <div class="col-auto"><a class="link-secondary fs-11 fw-medium" href="login.html">Registrase</a></div>
-                                <div class="col-auto"><a class="btn btn-sm btn-danger shadow" href="register.html">Iniciar Sesión</a>
+                                <div class="col-auto"><a class="btn btn-sm btn-danger shadow" href="<?= base_url() ?>login">Iniciar Sesión</a>
                                 </div>
                             </div>
                         </div>
