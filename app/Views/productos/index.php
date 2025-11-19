@@ -241,112 +241,52 @@
         </div>
 
         <div class="row g-4 mb-5">
-            <!-- Producto 1: Software Básico -->
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-chart-line fa-5x text-white opacity-75"></i>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Software de Gestión</div>
-                        <h3 class="product-name">Business Starter</h3>
-                        <p class="product-description">
-                            Solución ideal para pequeñas empresas que buscan optimizar sus procesos básicos de gestión.
-                        </p>
-                        <div class="product-features">
-                            <span class="feature-tag"><i class="fas fa-users"></i> 5 usuarios</span>
-                            <span class="feature-tag"><i class="fas fa-cloud"></i> 10GB</span>
-                            <span class="feature-tag"><i class="fas fa-headset"></i> Email</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">
-                                $29<span class="price-period">/mes</span>
+            <?php if (!empty($productos)): ?>
+                <?php foreach ($productos as $producto): ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <?php if ($producto['mas_vendido']): ?>
+                                    <span class="product-badge">Más Vendido</span>
+                                <?php endif; ?>
+                                <i class="fas fa-box fa-5x text-white opacity-75"></i>
                             </div>
-                            <button class="btn btn-view-details" onclick="openModal('basico')">
-                                Ver Detalles
-                            </button>
-                              <button class="btn btn-view-details">
-                                Ver Detalles
-                            </button>
-                            <button class="btn btn-view-details" >
-                                Ver Detalles
-                            </button>
+                            <div class="product-info">
+                                <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
+                                <h3 class="product-name"><?= $producto['nombre'] ?></h3>
+                                <p class="product-description">
+                                    <?= $producto['descripcion'] ?>
+                                </p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-box"></i> Stock: <?= $producto['stock'] ?></span>
+                                    <?php if ($producto['precio_oferta']): ?>
+                                        <span class="feature-tag"><i class="fas fa-tag"></i> Oferta</span>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="product-price">
+                                        <?php if ($producto['precio_oferta']): ?>
+                                            <span style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 2) ?></span>
+                                            $<?= number_format($producto['precio_oferta'], 2) ?>
+                                        <?php else: ?>
+                                            $<?= number_format($producto['precio'], 2) ?>
+                                        <?php endif; ?>
+                                    </div>
+                                    <button class="btn btn-view-details" onclick="openModal('producto<?= $producto['id'] ?>')">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12 text-center">
+                    <p>No hay productos disponibles</p>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <!-- Producto 2: Software Profesional -->
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="product-badge">Más Vendido</span>
-                        <i class="fas fa-chart-bar fa-5x text-white opacity-75"></i>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Software de Gestión</div>
-                        <h3 class="product-name">Business Pro</h3>
-                        <p class="product-description">
-                            Herramienta profesional con características avanzadas para empresas en crecimiento.
-                        </p>
-                        <div class="product-features">
-                            <span class="feature-tag"><i class="fas fa-users"></i> 25 usuarios</span>
-                            <span class="feature-tag"><i class="fas fa-cloud"></i> 100GB</span>
-                            <span class="feature-tag"><i class="fas fa-headset"></i> 24/7</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">
-                                $79<span class="price-period">/mes</span>
-                            </div>
-                            <button class="btn btn-view-details" onclick="openModal('profesional')">
-                                Ver Detalles
-                            </button>
-                             <button class="btn btn-view-details">
-                                Ver Detalles
-                            </button>
-                            <button class="btn btn-view-details" >
-                                Ver Detalles
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
 
-            <!-- Producto 3: Software Empresarial -->
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-chart-area fa-5x text-white opacity-75"></i>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Software de Gestión</div>
-                        <h3 class="product-name">Enterprise Suite</h3>
-                        <p class="product-description">
-                            Solución empresarial completa con capacidades ilimitadas y soporte premium.
-                        </p>
-                        <div class="product-features">
-                            <span class="feature-tag"><i class="fas fa-infinity"></i> Ilimitado</span>
-                            <span class="feature-tag"><i class="fas fa-shield-alt"></i> Premium</span>
-                            <span class="feature-tag"><i class="fas fa-cog"></i> Custom</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">
-                                $199<span class="price-period">/mes</span>
-                            </div>
-                            <button class="btn btn-view-details" onclick="openModal('empresarial')">
-                                Ver Detalles
-                            </button>
-                              <button class="btn btn-view-details">
-                                Ver Detalles
-                            </button>
-                            <button class="btn btn-view-details" >
-                                Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

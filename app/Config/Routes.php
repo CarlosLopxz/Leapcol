@@ -23,3 +23,15 @@ $routes->get('/logout', 'AuthController::logout');
 // Rutas de dashboards
 $routes->get('/cliente/dashboard', 'ClienteController::dashboard');
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
+
+// Rutas Admin
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
+    $routes->get('productos', 'Productos::index');
+    $routes->get('productos/editar/(:num)', 'Productos::editar/$1');
+    $routes->post('productos/actualizar/(:num)', 'Productos::actualizar/$1');
+    $routes->get('productos/eliminar/(:num)', 'Productos::eliminar/$1');
+    $routes->get('categorias', 'Categorias::index');
+    $routes->get('categorias/editar/(:num)', 'Categorias::editar/$1');
+    $routes->get('categorias/eliminar/(:num)', 'Categorias::eliminar/$1');
+});
