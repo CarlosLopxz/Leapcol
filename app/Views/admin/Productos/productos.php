@@ -89,11 +89,10 @@
                                                                                    class="btn btn-sm btn-primary me-2">
                                                                                     <i class="mdi mdi-pencil"></i>
                                                                                 </a>
-                                                                                <a href="<?= base_url('admin/productos/eliminar/' . $producto['id']) ?>" 
-                                                                                   class="btn btn-sm btn-danger"
-                                                                                   onclick="return confirm('¿Estás seguro de eliminar este producto?')">
+                                                                                <button class="btn btn-sm btn-danger" 
+                                                                                        onclick="eliminarProducto(<?= $producto['id'] ?>, '<?= $producto['nombre'] ?>')">
                                                                                     <i class="mdi mdi-delete"></i>
-                                                                                </a>
+                                                                                </button>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -120,5 +119,36 @@
     <!-- main-panel ends -->
 </div>
 <!-- page-body-wrapper ends -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function eliminarProducto(id, nombre) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: `¿Quieres eliminar el producto "${nombre}"?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`<?= base_url('admin/productos/eliminar/') ?>${id}`)
+                .then(() => {
+                    Swal.fire({
+                        title: '¡Eliminado!',
+                        text: 'El producto ha sido eliminado correctamente.',
+                        icon: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        location.reload();
+                    });
+                });
+        }
+    });
+}
+</script>
 
 <?= $this->include('admin/templates/footer') ?>

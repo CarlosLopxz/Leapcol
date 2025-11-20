@@ -28,10 +28,14 @@ $routes->get('/admin/dashboard', 'AdminController::dashboard');
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
     $routes->get('dashboard', 'Dashboard::index');
     $routes->get('productos', 'Productos::index');
+    $routes->get('productos/crear', 'Productos::crear');
+    $routes->post('productos/guardar', 'Productos::guardar');
     $routes->get('productos/editar/(:num)', 'Productos::editar/$1');
     $routes->post('productos/actualizar/(:num)', 'Productos::actualizar/$1');
     $routes->get('productos/eliminar/(:num)', 'Productos::eliminar/$1');
     $routes->get('categorias', 'Categorias::index');
+    $routes->get('categorias/crear', 'Categorias::crear');
+    $routes->post('categorias/guardar', 'Categorias::guardar');
     $routes->get('categorias/editar/(:num)', 'Categorias::editar/$1');
     $routes->get('categorias/eliminar/(:num)', 'Categorias::eliminar/$1');
 });
