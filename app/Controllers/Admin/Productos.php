@@ -33,13 +33,13 @@ class Productos extends BaseController
         if (!$producto) {
             return redirect()->to(base_url('admin/productos'))->with('error', 'Producto no encontrado');
         }
-        
+
         $data = [
             'title' => 'Editar Producto - Leapcol Admin',
             'producto' => $producto,
             'categorias' => $this->categoriaModel->getCategoriasActivas()
         ];
-        
+
         return view('admin/Productos/editar', $data);
     }
 
@@ -52,11 +52,17 @@ class Productos extends BaseController
             'precio_oferta' => $this->request->getPost('precio_oferta') ?: null,
             'stock' => $this->request->getPost('stock'),
             'descripcion' => $this->request->getPost('descripcion'),
-            'imagen_principal' => $this->request->getPost('imagen_principal'),
             'estado' => $this->request->getPost('estado'),
             'mas_vendido' => $this->request->getPost('mas_vendido') ? 1 : 0
         ];
-        
+
+        $imagen = $this->request->getFile('imagen_principal');
+        if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
+            $newName = $imagen->getRandomName();
+            $imagen->move(ROOTPATH . 'public/assets/img/productos', $newName);
+            $data['imagen_principal'] = $newName;
+        }
+
         $this->productoModel->update($id, $data);
         return redirect()->to(base_url('admin/productos'))->with('success', 'Producto actualizado correctamente');
     }
@@ -67,7 +73,7 @@ class Productos extends BaseController
             'title' => 'Crear Producto - Leapcol Admin',
             'categorias' => $this->categoriaModel->getCategoriasActivas()
         ];
-        
+
         return view('admin/Productos/crear', $data);
     }
 
@@ -80,11 +86,17 @@ class Productos extends BaseController
             'precio_oferta' => $this->request->getPost('precio_oferta') ?: null,
             'stock' => $this->request->getPost('stock'),
             'descripcion' => $this->request->getPost('descripcion'),
-            'imagen_principal' => $this->request->getPost('imagen_principal'),
             'estado' => $this->request->getPost('estado'),
             'mas_vendido' => $this->request->getPost('mas_vendido') ? 1 : 0
         ];
-        
+
+        $imagen = $this->request->getFile('imagen_principal');
+        if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
+            $newName = $imagen->getRandomName();
+            $imagen->move(ROOTPATH . 'public/assets/img/productos', $newName);
+            $data['imagen_principal'] = $newName;
+        }
+
         $this->productoModel->insert($data);
         return redirect()->to(base_url('admin/productos'))->with('success', 'Producto creado correctamente');
     }

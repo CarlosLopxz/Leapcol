@@ -246,10 +246,16 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="product-card">
                             <div class="product-image">
+                                <?php if (!empty($producto['imagen_principal'])): ?>
+                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>" 
+                                         alt="<?= $producto['nombre'] ?>" 
+                                         style="width: 100%; height: 100%; object-fit: cover;">
+                                <?php else: ?>
+                                    <i class="fas fa-box fa-5x text-white opacity-75"></i>
+                                <?php endif; ?>
                                 <?php if ($producto['mas_vendido']): ?>
                                     <span class="product-badge">Más Vendido</span>
                                 <?php endif; ?>
-                                <i class="fas fa-box fa-5x text-white opacity-75"></i>
                             </div>
                             <div class="product-info">
                                 <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
