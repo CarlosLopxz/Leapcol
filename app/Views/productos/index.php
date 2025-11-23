@@ -3,7 +3,7 @@
     .catalog-header {
         text-align: center;
         color: #2d3748;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 
     .catalog-header h1 {
@@ -14,26 +14,76 @@
 
     .catalog-header p {
         font-size: 1rem;
-        color: #718096;
+        color: #6c757d;
+    }
+
+    /* Category Filter Styles */
+    .category-filters {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+        border: 1px solid #e9ecef;
+    }
+
+    .filter-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 8px 18px;
+        border: 1px solid #dee2e6;
+        background: white;
+        color: #495057;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+        border-color: #dc3545;
+        color: #dc3545;
+        background: #fff5f5;
+    }
+
+    .filter-btn.active {
+        background: #dc3545;
+        color: white;
+        border-color: #dc3545;
     }
 
     .product-card {
         background: white;
         border-radius: 8px;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: box-shadow 0.2s ease;
         height: 100%;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        border: 1px solid #e9ecef;
     }
 
     .product-card:hover {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
 
     .product-image {
         height: 180px;
-        background: #2d3748;
+        background: #f8f9fa;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -44,7 +94,7 @@
         position: absolute;
         top: 12px;
         right: 12px;
-        background: #2d3748;
+        background: #dc3545;
         color: white;
         padding: 4px 12px;
         border-radius: 4px;
@@ -57,26 +107,30 @@
     }
 
     .product-category {
-        color: #718096;
+        color: #dc3545;
         font-size: 0.8rem;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 0.5rem;
     }
 
     .product-name {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: 600;
-        color: #2d3748;
+        color: #212529;
         margin-bottom: 0.75rem;
     }
 
     .product-description {
-        color: #718096;
+        color: #6c757d;
         font-size: 0.9rem;
         margin-bottom: 1.25rem;
         line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .product-features {
@@ -85,30 +139,31 @@
 
     .feature-tag {
         display: inline-block;
-        background: #f7fafc;
-        color: #4a5568;
+        background: #f8f9fa;
+        color: #495057;
         padding: 4px 10px;
         border-radius: 4px;
         font-size: 0.75rem;
         margin-right: 6px;
         margin-bottom: 6px;
+        border: 1px solid #e9ecef;
     }
 
     .product-footer {
         padding-top: 1.25rem;
-        border-top: 1px solid #e2e8f0;
+        border-top: 1px solid #e9ecef;
     }
 
     .product-price {
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: 600;
-        color: #2d3748;
+        color: #212529;
         margin-bottom: 1.25rem;
     }
 
     .price-period {
         font-size: 0.85rem;
-        color: #718096;
+        color: #6c757d;
         font-weight: 400;
     }
 
@@ -124,60 +179,68 @@
         font-weight: 500;
         font-size: 0.9rem;
         transition: all 0.2s ease;
-        border: 1px solid #e2e8f0;
+        cursor: pointer;
+    }
+
+    .btn-buy {
+        background: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-buy:hover {
+        background: #c82333;
     }
 
     .btn-details {
         background: white;
-        color: #2d3748;
-        border: 1px solid #2d3748;
+        color: #495057;
+        border: 1px solid #dee2e6;
     }
 
     .btn-details:hover {
-        background: #2d3748;
-        color: white;
-    }
-
-    .btn-advisor {
-        background: white;
-        color: #718096;
-    }
-
-    .btn-advisor:hover {
-        background: #f7fafc;
-        color: #2d3748;
+        background: #f8f9fa;
+        border-color: #adb5bd;
     }
 
     /* Modal Styles */
     .modal-content {
-        border-radius: 12px;
+        border-radius: 8px;
         border: none;
     }
 
     .modal-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #dc3545;
         color: white;
-        border-radius: 12px 12px 0 0;
+        border-radius: 8px 8px 0 0;
         padding: 1.5rem;
     }
 
     .modal-title {
         font-weight: 700;
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 
     .modal-subtitle {
         opacity: 0.9;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .modal-image {
         height: 250px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #f8f9fa;
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
+        border: 1px solid #e9ecef;
+    }
+
+    .modal-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .detail-section {
@@ -185,7 +248,7 @@
     }
 
     .detail-section h5 {
-        color: #2d3748;
+        color: #212529;
         font-weight: 700;
         margin-bottom: 1rem;
         font-size: 1.1rem;
@@ -198,8 +261,8 @@
 
     .feature-list li {
         padding: 10px 0;
-        border-bottom: 1px solid #e2e8f0;
-        color: #4a5568;
+        border-bottom: 1px solid #e9ecef;
+        color: #495057;
     }
 
     .feature-list li:last-child {
@@ -207,29 +270,34 @@
     }
 
     .feature-list i {
-        color: #48bb78;
+        color: #28a745;
         margin-right: 10px;
     }
 
     .spec-badge {
-        background: #edf2f7;
+        background: #f8f9fa;
         padding: 8px 16px;
         border-radius: 6px;
         display: inline-block;
         margin: 5px;
         font-size: 0.9rem;
-        color: #2d3748;
+        color: #495057;
+        border: 1px solid #e9ecef;
     }
 
     .btn-primary-custom {
-        background: #667eea;
+        background: #dc3545;
         border: none;
         padding: 12px 32px;
         font-weight: 600;
     }
 
     .btn-primary-custom:hover {
-        background: #5568d3;
+        background: #c82333;
+    }
+
+    .product-item {
+        transition: opacity 0.2s ease;
     }
 </style>
 </head>
@@ -240,10 +308,30 @@
             <p>Descubre las mejores soluciones para tu negocio</p>
         </div>
 
-        <div class="row g-4 mb-5">
+        <!-- Category Filters -->
+        <div class="category-filters">
+            <div class="filter-title">
+                <i class="fas fa-filter"></i>
+                Filtrar por Categoría
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-th"></i> Todos
+                </button>
+                <?php if (!empty($categorias)): ?>
+                    <?php foreach ($categorias as $categoria): ?>
+                        <button class="filter-btn" data-category="<?= $categoria['id'] ?>">
+                            <?= $categoria['nombre'] ?>
+                        </button>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5" id="productos-container">
             <?php if (!empty($productos)): ?>
                 <?php foreach ($productos as $producto): ?>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
                         <div class="product-card">
                             <div class="product-image">
                                 <?php if (!empty($producto['imagen_principal'])): ?>
@@ -251,7 +339,7 @@
                                          alt="<?= $producto['nombre'] ?>" 
                                          style="width: 100%; height: 100%; object-fit: cover;">
                                 <?php else: ?>
-                                    <i class="fas fa-box fa-5x text-white opacity-75"></i>
+                                    <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
                                 <?php endif; ?>
                                 <?php if ($producto['mas_vendido']): ?>
                                     <span class="product-badge">Más Vendido</span>
@@ -278,9 +366,14 @@
                                             $<?= number_format($producto['precio'], 2) ?>
                                         <?php endif; ?>
                                     </div>
-                                    <button class="btn btn-view-details" onclick="openModal('producto<?= $producto['id'] ?>')">
-                                        Ver Detalles
-                                    </button>
+                                    <div class="btn-group-actions">
+                                        <button class="btn-minimal btn-buy">
+                                            <i class="fas fa-shopping-cart"></i> Comprar
+                                        </button>
+                                        <button class="btn-minimal btn-details" onclick='verDetalles(<?= json_encode($producto) ?>)'>
+                                            <i class="fas fa-info-circle"></i> Detalles
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -291,217 +384,135 @@
                     <p>No hay productos disponibles</p>
                 </div>
             <?php endif; ?>
-
-
         </div>
     </div>
 
-    <!-- Modal Software Básico -->
-    <div class="modal fade" id="modalBasico" tabindex="-1" aria-hidden="true">
+    <!-- Modal Dinámico de Producto -->
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <div>
-                        <h5 class="modal-title">Business Starter</h5>
-                        <p class="modal-subtitle mb-0">Software de Gestión para Pequeñas Empresas</p>
+                        <h5 class="modal-title" id="modalProductoTitulo"></h5>
+                        <p class="modal-subtitle mb-0" id="modalProductoCategoria"></p>
                     </div>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-image mb-4">
-                        <i class="fas fa-chart-line fa-5x text-white opacity-75"></i>
+                    <div class="modal-image mb-4" id="modalProductoImagen">
+                        <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
                     </div>
                     
                     <div class="text-center mb-4">
-                        <span class="product-price">$29<span class="price-period">/mes</span></span>
+                        <span class="product-price" id="modalProductoPrecio"></span>
                     </div>
 
                     <div class="detail-section">
                         <h5>Descripción del Producto</h5>
-                        <p class="text-muted">
-                            Business Starter es la solución perfecta para pequeñas empresas y startups que necesitan 
-                            una herramienta confiable y fácil de usar para gestionar sus operaciones diarias. 
-                            Incluye todas las funciones esenciales sin complejidades innecesarias.
-                        </p>
+                        <p class="text-muted" id="modalProductoDescripcion"></p>
                     </div>
 
                     <div class="detail-section">
-                        <h5>Características Principales</h5>
+                        <h5>Información del Producto</h5>
                         <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> Hasta 5 usuarios simultáneos</li>
-                            <li><i class="fas fa-check-circle"></i> 10GB de almacenamiento en la nube</li>
-                            <li><i class="fas fa-check-circle"></i> Soporte técnico por email</li>
-                            <li><i class="fas fa-check-circle"></i> Actualizaciones automáticas</li>
-                            <li><i class="fas fa-check-circle"></i> Panel de control básico</li>
-                            <li><i class="fas fa-check-circle"></i> Reportes mensuales</li>
+                            <li><i class="fas fa-tag"></i> <strong>Categoría:</strong> <span id="modalProductoCategoriaInfo"></span></li>
+                            <li><i class="fas fa-box"></i> <strong>Stock Disponible:</strong> <span id="modalProductoStock"></span></li>
+                            <li id="modalProductoOfertaLi" style="display: none;">
+                                <i class="fas fa-percentage"></i> <strong>Precio Original:</strong> 
+                                <span id="modalProductoPrecioOriginal"></span>
+                            </li>
                         </ul>
                     </div>
 
-                    <div class="detail-section">
-                        <h5>Especificaciones Técnicas</h5>
-                        <div>
-                            <span class="spec-badge">Tiempo de respuesta: 24-48h</span>
-                            <span class="spec-badge">Uptime: 99.5%</span>
-                            <span class="spec-badge">Backup semanal</span>
-                            <span class="spec-badge">SSL/TLS</span>
-                            <span class="spec-badge">Multi-dispositivo</span>
+                    <div class="detail-section" id="modalProductoMasVendido" style="display: none;">
+                        <div class="alert alert-success">
+                            <i class="fas fa-star"></i> <strong>Producto Más Vendido</strong> - Este es uno de nuestros productos más populares
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary-custom">
+                        <i class="fas fa-shopping-cart"></i> Comprar Ahora
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Software Profesional -->
-    <div class="modal fade" id="modalProfesional" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>
-                        <h5 class="modal-title">Business Pro</h5>
-                        <p class="modal-subtitle mb-0">Software de Gestión Profesional</p>
-                    </div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-image mb-4">
-                        <i class="fas fa-chart-bar fa-5x text-white opacity-75"></i>
-                    </div>
-                    
-                    <div class="text-center mb-4">
-                        <span class="product-price">$79<span class="price-period">/mes</span></span>
-                    </div>
-
-                    <div class="detail-section">
-                        <h5>Descripción del Producto</h5>
-                        <p class="text-muted">
-                            Business Pro es la herramienta profesional diseñada para empresas en expansión que 
-                            requieren funcionalidades avanzadas, mayor capacidad y soporte prioritario. 
-                            Incluye todas las características del plan Starter más integraciones ilimitadas y análisis detallados.
-                        </p>
-                    </div>
-
-                    <div class="detail-section">
-                        <h5>Características Principales</h5>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle"></i> Hasta 25 usuarios</li>
-                                    <li><i class="fas fa-check-circle"></i> 100GB almacenamiento</li>
-                                    <li><i class="fas fa-check-circle"></i> Soporte prioritario 24/7</li>
-                                    <li><i class="fas fa-check-circle"></i> Panel avanzado</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle"></i> API completa</li>
-                                    <li><i class="fas fa-check-circle"></i> Integraciones ilimitadas</li>
-                                    <li><i class="fas fa-check-circle"></i> Análisis y reportes</li>
-                                    <li><i class="fas fa-check-circle"></i> Actualizaciones automáticas</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h5>Especificaciones Técnicas</h5>
-                        <div>
-                            <span class="spec-badge">Respuesta inmediata</span>
-                            <span class="spec-badge">Uptime: 99.9%</span>
-                            <span class="spec-badge">Backup cada 6h</span>
-                            <span class="spec-badge">SSL/TLS</span>
-                            <span class="spec-badge">2FA</span>
-                            <span class="spec-badge">Multi-plataforma</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Software Empresarial -->
-    <div class="modal fade" id="modalEmpresarial" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>
-                        <h5 class="modal-title">Enterprise Suite</h5>
-                        <p class="modal-subtitle mb-0">Solución Empresarial Completa</p>
-                    </div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-image mb-4">
-                        <i class="fas fa-chart-area fa-5x text-white opacity-75"></i>
-                    </div>
-                    
-                    <div class="text-center mb-4">
-                        <span class="product-price">$199<span class="price-period">/mes</span></span>
-                    </div>
-
-                    <div class="detail-section">
-                        <h5>Descripción del Producto</h5>
-                        <p class="text-muted">
-                            Enterprise Suite es la solución empresarial definitiva para grandes organizaciones 
-                            que demandan el máximo nivel de servicio, seguridad y personalización. 
-                            Incluye capacidades ilimitadas, soporte dedicado y todas las características premium.
-                        </p>
-                    </div>
-
-                    <div class="detail-section">
-                        <h5>Características Principales</h5>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle"></i> Usuarios ilimitados</li>
-                                    <li><i class="fas fa-check-circle"></i> Almacenamiento ilimitado</li>
-                                    <li><i class="fas fa-check-circle"></i> Gerente dedicado 24/7</li>
-                                    <li><i class="fas fa-check-circle"></i> Panel empresarial</li>
-                                    <li><i class="fas fa-check-circle"></i> Consultoría incluida</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle"></i> API personalizada</li>
-                                    <li><i class="fas fa-check-circle"></i> Integraciones custom</li>
-                                    <li><i class="fas fa-check-circle"></i> Análisis avanzados</li>
-                                    <li><i class="fas fa-check-circle"></i> SLA garantizado</li>
-                                    <li><i class="fas fa-check-circle"></i> Servidor dedicado</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h5>Especificaciones Técnicas</h5>
-                        <div>
-                            <span class="spec-badge">Soporte inmediato</span>
-                            <span class="spec-badge">Uptime: 99.99%</span>
-                            <span class="spec-badge">Backup en tiempo real</span>
-                            <span class="spec-badge">Encriptación avanzada</span>
-                            <span class="spec-badge">Autenticación multifactor</span>
-                            <span class="spec-badge">Auditoría de seguridad</span>
-                            <span class="spec-badge">Infraestructura dedicada</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
-        function openModal(plan) {
-            const modalId = 'modal' + plan.charAt(0).toUpperCase() + plan.slice(1);
-            const modal = new bootstrap.Modal(document.getElementById(modalId));
+        // Category Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+
+                // Filter products with simple fade
+                productItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 200);
+                    }
+                });
+            });
+        });
+
+        // Product Details Modal Functionality
+        function verDetalles(producto) {
+            // Set modal title and category
+            document.getElementById('modalProductoTitulo').textContent = producto.nombre;
+            document.getElementById('modalProductoCategoria').textContent = producto.categoria_nombre || 'Sin categoría';
+            document.getElementById('modalProductoCategoriaInfo').textContent = producto.categoria_nombre || 'Sin categoría';
+            
+            // Set image
+            const modalImagen = document.getElementById('modalProductoImagen');
+            if (producto.imagen_principal) {
+                modalImagen.innerHTML = `<img src="<?= base_url('public/assets/img/productos/') ?>${producto.imagen_principal}" alt="${producto.nombre}">`;
+            } else {
+                modalImagen.innerHTML = '<i class="fas fa-box fa-5x text-secondary opacity-50"></i>';
+            }
+            
+            // Set price
+            let precioHTML = '';
+            if (producto.precio_oferta && parseFloat(producto.precio_oferta) > 0) {
+                precioHTML = `$${parseFloat(producto.precio_oferta).toFixed(2)}`;
+                document.getElementById('modalProductoPrecioOriginal').textContent = `$${parseFloat(producto.precio).toFixed(2)}`;
+                document.getElementById('modalProductoOfertaLi').style.display = 'block';
+            } else {
+                precioHTML = `$${parseFloat(producto.precio).toFixed(2)}`;
+                document.getElementById('modalProductoOfertaLi').style.display = 'none';
+            }
+            document.getElementById('modalProductoPrecio').innerHTML = precioHTML;
+            
+            // Set description
+            document.getElementById('modalProductoDescripcion').textContent = producto.descripcion || 'Sin descripción disponible';
+            
+            // Set stock
+            document.getElementById('modalProductoStock').textContent = producto.stock || '0';
+            
+            // Show/hide "Más Vendido" badge
+            if (producto.mas_vendido == 1 || producto.mas_vendido == '1') {
+                document.getElementById('modalProductoMasVendido').style.display = 'block';
+            } else {
+                document.getElementById('modalProductoMasVendido').style.display = 'none';
+            }
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('modalProducto'));
             modal.show();
         }
     </script>

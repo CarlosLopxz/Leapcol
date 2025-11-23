@@ -94,6 +94,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label for="imagenes_adicionales">Imágenes Adicionales</label>
+                                                        <input type="file" class="form-control" id="imagenes_adicionales" name="imagenes_adicionales[]" accept="image/*" multiple>
+                                                        <small class="text-muted">Puedes seleccionar varias imágenes</small>
+                                                    </div>
                                                     
                                                     <div class="form-check">
                                                         <input type="checkbox" class="form-check-input" id="mas_vendido" name="mas_vendido" value="1">

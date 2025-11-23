@@ -32,15 +32,35 @@ class ProductoModel extends Model
     public function getProductosConCategoria()
     {
         return $this->select('productos.*, categorias.nombre as categoria_nombre')
-                    ->join('categorias', 'categorias.id = productos.categoria_id')
-                    ->where('productos.estado', 'activo')
-                    ->findAll();
+            ->join('categorias', 'categorias.id = productos.categoria_id')
+            ->where('productos.estado', 'activo')
+            ->findAll();
     }
 
     public function getProductosMasVendidos($limit = 5)
     {
         return $this->where('mas_vendido', true)
-                    ->where('estado', 'activo')
-                    ->findAll($limit);
+            ->where('estado', 'activo')
+            ->findAll($limit);
+    }
+
+    public function getProductosPorCategoria($categoriaId = null)
+    {
+        $builder = $this->select('productos.*, categorias.nombre as categoria_nombre')
+            ->join('categorias', 'categorias.id = productos.categoria_id')
+            ->where('productos.estado', 'activo');
+
+        if ($categoriaId) {
+            $builder->where('productos.categoria_id', $categoriaId);
+        }
+
+        return $builder->findAll();
+    }
+
+    public function getRecentProducts($limit = 6)
+    {
+        return $this->where('estado', 'activo')
+            ->orderBy('id', 'DESC')
+            ->findAll($limit);
     }
 }

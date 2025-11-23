@@ -19,11 +19,27 @@ class Productos extends BaseController
     public function index()
     {
         $data = [
-            'productos' => $this->productoModel->getProductosConCategoria(),
-            'categorias' => $this->categoriaModel->getCategoriasActivas()
+            'title' => 'Productos - Leapcol',
+            'productos' => $this->productoModel->where('estado', 'activo')->findAll()
         ];
-        
+
         return view('productos/index', $data);
+    }
+
+    public function detalle($id)
+    {
+        $producto = $this->productoModel->find($id);
+
+        if (!$producto) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        $data = [
+            'title' => $producto['nombre'] . ' - Leapcol',
+            'producto' => $producto
+        ];
+
+        return view('productos/detalle', $data);
     }
 
     public function erp()

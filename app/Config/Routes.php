@@ -9,11 +9,13 @@ $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/contacto', 'Contacto::index');
 $routes->get('/productos', 'Productos::index');
+$routes->get('/productos/detalle/(:num)', 'Productos::detalle/$1');
 $routes->get('/productos/erp', 'Productos::erp');
 $routes->get('/productos/crm', 'Productos::crm');
 $routes->get('/productos/pos', 'Productos::pos');
 $routes->get('/productos/ecommerce', 'Productos::ecommerce');
 $routes->get('/sobre-nosotros', 'SobreNosotros::index');
+$routes->post('/telegram/send', 'Telegram::sendMessage');
 
 // Rutas de autenticación
 $routes->get('/login', 'AuthController::login');
@@ -25,7 +27,7 @@ $routes->get('/cliente/dashboard', 'ClienteController::dashboard');
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
 
 // Rutas Admin
-$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
     $routes->get('dashboard', 'Dashboard::index');
     $routes->get('productos', 'Productos::index');
     $routes->get('productos/crear', 'Productos::crear');

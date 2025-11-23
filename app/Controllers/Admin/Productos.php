@@ -63,6 +63,26 @@ class Productos extends BaseController
             $data['imagen_principal'] = $newName;
         }
 
+        // Handle additional images
+        $files = $this->request->getFileMultiple('imagenes_adicionales');
+        $newImages = [];
+        if ($files) {
+            foreach ($files as $file) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $newName = $file->getRandomName();
+                    $file->move(ROOTPATH . 'public/assets/img/productos', $newName);
+                    $newImages[] = $newName;
+                }
+            }
+        }
+
+        if (!empty($newImages)) {
+            $producto = $this->productoModel->find($id);
+            $existingImages = json_decode($producto['imagenes_adicionales'] ?? '[]', true) ?? [];
+            $allImages = array_merge($existingImages, $newImages);
+            $data['imagenes_adicionales'] = json_encode($allImages);
+        }
+
         $this->productoModel->update($id, $data);
         return redirect()->to(base_url('admin/productos'))->with('success', 'Producto actualizado correctamente');
     }
@@ -96,6 +116,20 @@ class Productos extends BaseController
             $imagen->move(ROOTPATH . 'public/assets/img/productos', $newName);
             $data['imagen_principal'] = $newName;
         }
+
+        // Handle additional images
+        $files = $this->request->getFileMultiple('imagenes_adicionales');
+        $additionalImages = [];
+        if ($files) {
+            foreach ($files as $file) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $newName = $file->getRandomName();
+                    $file->move(ROOTPATH . 'public/assets/img/productos', $newName);
+                    $additionalImages[] = $newName;
+                }
+            }
+        }
+        $data['imagenes_adicionales'] = json_encode($additionalImages);
 
         $this->productoModel->insert($data);
         return redirect()->to(base_url('admin/productos'))->with('success', 'Producto creado correctamente');
