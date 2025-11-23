@@ -13,7 +13,8 @@
                             if (!empty($producto['imagen_principal'])) {
                                 $imagenes[] = $producto['imagen_principal'];
                             }
-                            $adicionales = json_decode($producto['imagenes_adicionales'] ?? '[]', true);
+                            // Fix: Use array directly as it is already decoded in controller
+                            $adicionales = $producto['imagenes_adicionales'] ?? [];
                             if (is_array($adicionales)) {
                                 $imagenes = array_merge($imagenes, $adicionales);
                             }
