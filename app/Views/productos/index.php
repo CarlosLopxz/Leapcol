@@ -22,7 +22,7 @@
         background: white;
         padding: 1.5rem;
         border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
         border: 1px solid #e9ecef;
     }
@@ -73,12 +73,12 @@
         overflow: hidden;
         transition: box-shadow 0.2s ease;
         height: 100%;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         border: 1px solid #e9ecef;
     }
 
     .product-card:hover {
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
 
     .product-image {
@@ -301,6 +301,7 @@
     }
 </style>
 </head>
+
 <body>
     <div class="container">
         <div class="catalog-header">
@@ -328,16 +329,15 @@
             </div>
         </div>
 
-        <div class="row g-4 mb-5" id="productos-container">
+        <div class="row g-4 mb-5" id="productos-container" style="min-height: 500px;">
             <?php if (!empty($productos)): ?>
                 <?php foreach ($productos as $producto): ?>
                     <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
                         <div class="product-card">
                             <div class="product-image">
                                 <?php if (!empty($producto['imagen_principal'])): ?>
-                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>" 
-                                         alt="<?= $producto['nombre'] ?>" 
-                                         style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
+                                        alt="<?= $producto['nombre'] ?>" style="width: 100%; height: 100%; object-fit: cover;">
                                 <?php else: ?>
                                     <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
                                 <?php endif; ?>
@@ -360,7 +360,8 @@
                                 <div class="product-footer">
                                     <div class="product-price">
                                         <?php if ($producto['precio_oferta']): ?>
-                                            <span style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 2) ?></span>
+                                            <span
+                                                style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 2) ?></span>
                                             $<?= number_format($producto['precio_oferta'], 2) ?>
                                         <?php else: ?>
                                             $<?= number_format($producto['precio'], 2) ?>
@@ -370,7 +371,8 @@
                                         <button class="btn-minimal btn-buy">
                                             <i class="fas fa-shopping-cart"></i> Comprar
                                         </button>
-                                        <button class="btn-minimal btn-details" onclick='verDetalles(<?= json_encode($producto) ?>)'>
+                                        <button class="btn-minimal btn-details"
+                                            onclick='verDetalles(<?= json_encode($producto) ?>)'>
                                             <i class="fas fa-info-circle"></i> Detalles
                                         </button>
                                     </div>
@@ -402,7 +404,7 @@
                     <div class="modal-image mb-4" id="modalProductoImagen">
                         <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
                     </div>
-                    
+
                     <div class="text-center mb-4">
                         <span class="product-price" id="modalProductoPrecio"></span>
                     </div>
@@ -415,10 +417,12 @@
                     <div class="detail-section">
                         <h5>Información del Producto</h5>
                         <ul class="feature-list">
-                            <li><i class="fas fa-tag"></i> <strong>Categoría:</strong> <span id="modalProductoCategoriaInfo"></span></li>
-                            <li><i class="fas fa-box"></i> <strong>Stock Disponible:</strong> <span id="modalProductoStock"></span></li>
+                            <li><i class="fas fa-tag"></i> <strong>Categoría:</strong> <span
+                                    id="modalProductoCategoriaInfo"></span></li>
+                            <li><i class="fas fa-box"></i> <strong>Stock Disponible:</strong> <span
+                                    id="modalProductoStock"></span></li>
                             <li id="modalProductoOfertaLi" style="display: none;">
-                                <i class="fas fa-percentage"></i> <strong>Precio Original:</strong> 
+                                <i class="fas fa-percentage"></i> <strong>Precio Original:</strong>
                                 <span id="modalProductoPrecioOriginal"></span>
                             </li>
                         </ul>
@@ -426,7 +430,8 @@
 
                     <div class="detail-section" id="modalProductoMasVendido" style="display: none;">
                         <div class="alert alert-success">
-                            <i class="fas fa-star"></i> <strong>Producto Más Vendido</strong> - Este es uno de nuestros productos más populares
+                            <i class="fas fa-star"></i> <strong>Producto Más Vendido</strong> - Este es uno de nuestros
+                            productos más populares
                         </div>
                     </div>
                 </div>
@@ -436,86 +441,287 @@
                         <i class="fas fa-shopping-cart"></i> Comprar Ahora
                     </button>
                 </div>
-            </div>
-        </div>
-    </div>
+                .detail-section h5 {
+                color: #212529;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+                }
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Category Filter Functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productItems = document.querySelectorAll('.product-item');
+                .feature-list {
+                list-style: none;
+                padding: 0;
+                }
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
+                .feature-list li {
+                padding: 10px 0;
+                border-bottom: 1px solid #e9ecef;
+                color: #495057;
+                }
 
-                const category = this.getAttribute('data-category');
+                .feature-list li:last-child {
+                border-bottom: none;
+                }
 
-                // Filter products with simple fade
-                productItems.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                        }, 10);
-                    } else {
-                        item.style.opacity = '0';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 200);
-                    }
-                });
-            });
-        });
+                .feature-list i {
+                color: #28a745;
+                margin-right: 10px;
+                }
 
-        // Product Details Modal Functionality
-        function verDetalles(producto) {
-            // Set modal title and category
-            document.getElementById('modalProductoTitulo').textContent = producto.nombre;
-            document.getElementById('modalProductoCategoria').textContent = producto.categoria_nombre || 'Sin categoría';
-            document.getElementById('modalProductoCategoriaInfo').textContent = producto.categoria_nombre || 'Sin categoría';
-            
-            // Set image
-            const modalImagen = document.getElementById('modalProductoImagen');
-            if (producto.imagen_principal) {
-                modalImagen.innerHTML = `<img src="<?= base_url('public/assets/img/productos/') ?>${producto.imagen_principal}" alt="${producto.nombre}">`;
-            } else {
-                modalImagen.innerHTML = '<i class="fas fa-box fa-5x text-secondary opacity-50"></i>';
-            }
-            
-            // Set price
-            let precioHTML = '';
-            if (producto.precio_oferta && parseFloat(producto.precio_oferta) > 0) {
-                precioHTML = `$${parseFloat(producto.precio_oferta).toFixed(2)}`;
-                document.getElementById('modalProductoPrecioOriginal').textContent = `$${parseFloat(producto.precio).toFixed(2)}`;
-                document.getElementById('modalProductoOfertaLi').style.display = 'block';
-            } else {
-                precioHTML = `$${parseFloat(producto.precio).toFixed(2)}`;
-                document.getElementById('modalProductoOfertaLi').style.display = 'none';
-            }
-            document.getElementById('modalProductoPrecio').innerHTML = precioHTML;
-            
-            // Set description
-            document.getElementById('modalProductoDescripcion').textContent = producto.descripcion || 'Sin descripción disponible';
-            
-            // Set stock
-            document.getElementById('modalProductoStock').textContent = producto.stock || '0';
-            
-            // Show/hide "Más Vendido" badge
-            if (producto.mas_vendido == 1 || producto.mas_vendido == '1') {
-                document.getElementById('modalProductoMasVendido').style.display = 'block';
-            } else {
-                document.getElementById('modalProductoMasVendido').style.display = 'none';
-            }
-            
-            // Show modal
-            const modal = new bootstrap.Modal(document.getElementById('modalProducto'));
-            modal.show();
-        }
-    </script>
-</body>
-</html>
-<?= $this->include('layouts/footer') ?>
+                .spec-badge {
+                background: #f8f9fa;
+                padding: 8px 16px;
+                border-radius: 6px;
+                display: inline-block;
+                margin: 5px;
+                font-size: 0.9rem;
+                color: #495057;
+                border: 1px solid #e9ecef;
+                }
+
+                .btn-primary-custom {
+                background: #dc3545;
+                border: none;
+                padding: 12px 32px;
+                font-weight: 600;
+                }
+
+                .btn-primary-custom:hover {
+                background: #c82333;
+                }
+
+                .product-item {
+                transition: opacity 0.2s ease;
+                }
+                </style>
+                </head>
+
+                <body>
+                    <div class="container">
+                        <div class="catalog-header">
+                            <h1>Catálogo de Software</h1>
+                            <p>Descubre las mejores soluciones para tu negocio</p>
+                        </div>
+
+                        <!-- Category Filters -->
+                        <div class="category-filters">
+                            <div class="filter-title">
+                                <i class="fas fa-filter"></i>
+                                Filtrar por Categoría
+                            </div>
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-category="all">
+                                    <i class="fas fa-th"></i> Todos
+                                </button>
+                                <?php if (!empty($categorias)): ?>
+                                    <?php foreach ($categorias as $categoria): ?>
+                                        <button class="filter-btn" data-category="<?= $categoria['id'] ?>">
+                                            <?= $categoria['nombre'] ?>
+                                        </button>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="row g-4 mb-5" id="productos-container" style="min-height: 500px;">
+                            <?php if (!empty($productos)): ?>
+                                <?php foreach ($productos as $producto): ?>
+                                    <div class="col-lg-4 col-md-6 product-item"
+                                        data-category="<?= $producto['categoria_id'] ?>">
+                                        <div class="product-card">
+                                            <div class="product-image">
+                                                <?php if (!empty($producto['imagen_principal'])): ?>
+                                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
+                                                        alt="<?= $producto['nombre'] ?>"
+                                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                                <?php else: ?>
+                                                    <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
+                                                <?php endif; ?>
+                                                <?php if ($producto['mas_vendido']): ?>
+                                                    <span class="product-badge">Más Vendido</span>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-category">
+                                                    <?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
+                                                <h3 class="product-name"><?= $producto['nombre'] ?></h3>
+                                                <p class="product-description">
+                                                    <?= $producto['descripcion'] ?>
+                                                </p>
+                                                <div class="product-features">
+                                                    <span class="feature-tag"><i class="fas fa-box"></i> Stock:
+                                                        <?= $producto['stock'] ?></span>
+                                                    <?php if ($producto['precio_oferta']): ?>
+                                                        <span class="feature-tag"><i class="fas fa-tag"></i> Oferta</span>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="product-footer">
+                                                    <div class="product-price">
+                                                        <?php if ($producto['precio_oferta']): ?>
+                                                            <span
+                                                                style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 2) ?></span>
+                                                            $<?= number_format($producto['precio_oferta'], 2) ?>
+                                                        <?php else: ?>
+                                                            $<?= number_format($producto['precio'], 2) ?>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <div class="btn-group-actions">
+                                                        <button class="btn-minimal btn-buy">
+                                                            <i class="fas fa-shopping-cart"></i> Comprar
+                                                        </button>
+                                                        <button class="btn-minimal btn-details"
+                                                            onclick='verDetalles(<?= json_encode($producto) ?>)'>
+                                                            <i class="fas fa-info-circle"></i> Detalles
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <div class="col-12 text-center">
+                                    <p>No hay productos disponibles</p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <!-- Modal Dinámico de Producto -->
+                    <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div>
+                                        <h5 class="modal-title" id="modalProductoTitulo"></h5>
+                                        <p class="modal-subtitle mb-0" id="modalProductoCategoria"></p>
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white"
+                                        data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-image mb-4" id="modalProductoImagen">
+                                        <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
+                                    </div>
+
+                                    <div class="text-center mb-4">
+                                        <span class="product-price" id="modalProductoPrecio"></span>
+                                    </div>
+
+                                    <div class="detail-section">
+                                        <h5>Descripción del Producto</h5>
+                                        <p class="text-muted" id="modalProductoDescripcion"></p>
+                                    </div>
+
+                                    <div class="detail-section">
+                                        <h5>Información del Producto</h5>
+                                        <ul class="feature-list">
+                                            <li><i class="fas fa-tag"></i> <strong>Categoría:</strong> <span
+                                                    id="modalProductoCategoriaInfo"></span></li>
+                                            <li><i class="fas fa-box"></i> <strong>Stock Disponible:</strong> <span
+                                                    id="modalProductoStock"></span></li>
+                                            <li id="modalProductoOfertaLi" style="display: none;">
+                                                <i class="fas fa-percentage"></i> <strong>Precio Original:</strong>
+                                                <span id="modalProductoPrecioOriginal"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="detail-section" id="modalProductoMasVendido" style="display: none;">
+                                        <div class="alert alert-success">
+                                            <i class="fas fa-star"></i> <strong>Producto Más Vendido</strong> - Este es
+                                            uno de nuestros
+                                            productos más populares
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary-custom">
+                                        <i class="fas fa-shopping-cart"></i> Comprar Ahora
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script
+                        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+                    <script>
+                        // Category Filter Functionality
+                        const filterButtons = document.querySelectorAll('.filter-btn');
+                        const productItems = document.querySelectorAll('.product-item');
+
+                        filterButtons.forEach(button => {
+                            button.addEventListener('click', function () {
+                                // Update active button
+                                filterButtons.forEach(btn => btn.classList.remove('active'));
+                                this.classList.add('active');
+
+                                const category = this.getAttribute('data-category');
+
+                                // Filter products without delay to prevent layout jumps
+                                productItems.forEach(item => {
+                                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                                        item.style.display = 'block';
+                                        setTimeout(() => {
+                                            item.style.opacity = '1';
+                                        }, 10);
+                                    } else {
+                                        item.style.display = 'none';
+                                        item.style.opacity = '0';
+                                    }
+                                });
+                            });
+                        });
+
+                        // Product Details Modal Functionality
+                        function verDetalles(producto) {
+                            // Set modal title and category
+                            document.getElementById('modalProductoTitulo').textContent = producto.nombre;
+                            document.getElementById('modalProductoCategoria').textContent = producto.categoria_nombre || 'Sin categoría';
+                            document.getElementById('modalProductoCategoriaInfo').textContent = producto.categoria_nombre || 'Sin categoría';
+
+                            // Set image
+                            const modalImagen = document.getElementById('modalProductoImagen');
+                            if (producto.imagen_principal) {
+                                modalImagen.innerHTML = `<img src="<?= base_url('public/assets/img/productos/') ?>${producto.imagen_principal}" alt="${producto.nombre}">`;
+                            } else {
+                                modalImagen.innerHTML = '<i class="fas fa-box fa-5x text-secondary opacity-50"></i>';
+                            }
+
+                            // Set price
+                            let precioHTML = '';
+                            if (producto.precio_oferta && parseFloat(producto.precio_oferta) > 0) {
+                                precioHTML = `$${parseFloat(producto.precio_oferta).toFixed(2)}`;
+                                document.getElementById('modalProductoPrecioOriginal').textContent = `$${parseFloat(producto.precio).toFixed(2)}`;
+                                document.getElementById('modalProductoOfertaLi').style.display = 'block';
+                            } else {
+                                precioHTML = `$${parseFloat(producto.precio).toFixed(2)}`;
+                                document.getElementById('modalProductoOfertaLi').style.display = 'none';
+                            }
+                            document.getElementById('modalProductoPrecio').innerHTML = precioHTML;
+
+                            // Set description
+                            document.getElementById('modalProductoDescripcion').textContent = producto.descripcion || 'Sin descripción disponible';
+
+                            // Set stock
+                            document.getElementById('modalProductoStock').textContent = producto.stock || '0';
+
+                            // Show/hide "Más Vendido" badge
+                            if (producto.mas_vendido == 1 || producto.mas_vendido == '1') {
+                                document.getElementById('modalProductoMasVendido').style.display = 'block';
+                            } else {
+                                document.getElementById('modalProductoMasVendido').style.display = 'none';
+                            }
+
+                            // Show modal
+                            const modal = new bootstrap.Modal(document.getElementById('modalProducto'));
+                            modal.show();
+                        }
+                    </script>
+                </body>
+
+                </html>
+                <?= $this->include('layouts/footer') ?>

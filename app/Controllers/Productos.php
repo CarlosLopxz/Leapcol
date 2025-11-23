@@ -20,7 +20,8 @@ class Productos extends BaseController
     {
         $data = [
             'title' => 'Productos - Leapcol',
-            'productos' => $this->productoModel->where('estado', 'activo')->findAll()
+            'productos' => $this->productoModel->getProductosConCategoria(),
+            'categorias' => $this->categoriaModel->getCategoriasActivas()
         ];
 
         return view('productos/index', $data);
@@ -32,6 +33,13 @@ class Productos extends BaseController
 
         if (!$producto) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        // Decode additional images if they exist
+        if (!empty($producto['imagenes_adicionales'])) {
+            $producto['imagenes_adicionales'] = json_decode($producto['imagenes_adicionales'], true);
+        } else {
+            $producto['imagenes_adicionales'] = [];
         }
 
         $data = [
