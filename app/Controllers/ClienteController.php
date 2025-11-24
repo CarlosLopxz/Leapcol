@@ -11,10 +11,12 @@ class ClienteController extends BaseController
         }
 
         $suscripcionModel = new \App\Models\SuscripcionModel();
-        $userId = session()->get('id');
+        $userId = session()->get('user_id');
+
+        $suscripciones = $suscripcionModel->getSuscripcionesPorUsuario($userId);
 
         $data = [
-            'suscripciones' => $suscripcionModel->getSuscripcionesPorUsuario($userId)
+            'suscripciones' => $suscripciones
         ];
 
         return view('cliente/dashboard', $data);

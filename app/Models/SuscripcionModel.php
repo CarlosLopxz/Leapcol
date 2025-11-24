@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Models\UserModel;
 
 class SuscripcionModel extends Model
 {
@@ -28,15 +29,21 @@ class SuscripcionModel extends Model
     protected $deletedField = 'deleted_at';
 
     // Validation
-    protected $validationRules = [];
+    protected $validationRules = [
+        'user_id' => 'required',
+        'producto_id' => 'required',
+        'fecha_compra' => 'required',
+        'fecha_expiracion' => 'required',
+        'estado' => 'required|in_list[activo,inactivo,expirado]'
+    ];
     protected $validationMessages = [];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert = [];
-    protected $beforeUpdate = [];
+    protected $beforeInsert = ['checkUserRole'];
+    protected $beforeUpdate = ['checkUserRole'];
 
     public function getSuscripcionesPorUsuario($userId)
     {
@@ -44,5 +51,18 @@ class SuscripcionModel extends Model
             ->join('productos', 'productos.id = suscripciones.producto_id')
             ->where('suscripciones.user_id', $userId)
             ->findAll();
+    }
+
+    protected function checkUserRole(array $data)
+    {
+        if (isset($data['data']['user_id'])) {
+            $userModel = new UserModel();
+            $user = $userModel->find($data['data']['user_id']);
+
+            if (!$user || $user['rol'] !== 'cliente') {
+                throw new \Exception('El usuario debe tener el rol de cliente para tener una suscripción.');
+            }
+        }
+        return $data;
     }
 }
