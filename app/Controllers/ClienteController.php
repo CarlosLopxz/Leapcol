@@ -10,6 +10,13 @@ class ClienteController extends BaseController
             return redirect()->to('/login');
         }
 
-        return view('cliente/dashboard');
+        $suscripcionModel = new \App\Models\SuscripcionModel();
+        $userId = session()->get('id');
+
+        $data = [
+            'suscripciones' => $suscripcionModel->getSuscripcionesPorUsuario($userId)
+        ];
+
+        return view('cliente/dashboard', $data);
     }
 }

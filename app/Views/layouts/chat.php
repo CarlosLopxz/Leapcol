@@ -54,16 +54,85 @@
 <script>
   function toggleChat() {
     var chatWindow = document.getElementById('chatWindow');
+    var badge = document.getElementById('notificationBadge');
+    
     if (chatWindow.style.display === 'block') {
       chatWindow.style.display = 'none';
+      if (messageInterval) {
+        clearInterval(messageInterval);
+      }
     } else {
       chatWindow.style.display = 'block';
       document.getElementById('chatInput').focus();
+      startMessagePolling();
+      
+      if (badge) {
+        badge.remove();
+      }
+    }
+  }
+
+  function startMessagePolling() {
+    if (messageInterval) {
+      clearInterval(messageInterval);
+    }
+    messageInterval = setInterval(checkForMessages, 3000);
+    checkForMessages();
+  }
+
+  function checkForMessages() {
+    if (!formSubmitted) return;
+    
+    fetch('<?= base_url("telegram/messages") ?>?last_update_id=' + lastUpdateId)
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success' && data.messages.length > 0) {
+          var messagesDiv = document.getElementById('chatMessages');
+          var chatWindow = document.getElementById('chatWindow');
+          
+          data.messages.forEach(function(msg) {
+            var botMsg = document.createElement('div');
+            botMsg.style.cssText = 'background: #e5e7eb; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
+            botMsg.innerHTML = '<strong>' + msg.from + ':</strong> ' + msg.text;
+            messagesDiv.appendChild(botMsg);
+          });
+          
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+          lastUpdateId = data.last_update_id;
+          
+          if (chatWindow.style.display !== 'block') {
+            showNotification();
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Error checking messages:', error);
+      });
+  }
+  
+  function showNotification() {
+    var chatBtn = document.getElementById('chatBtn');
+    
+    if (!document.getElementById('notificationBadge')) {
+      var badge = document.createElement('div');
+      badge.id = 'notificationBadge';
+      badge.style.cssText = 'position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; animation: pulse 1s infinite;';
+      badge.textContent = '1';
+      chatBtn.parentElement.appendChild(badge);
+      
+      if (!document.getElementById('pulseCSS')) {
+        var style = document.createElement('style');
+        style.id = 'pulseCSS';
+        style.textContent = '@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }';
+        document.head.appendChild(style);
+      }
     }
   }
 
   var hasShownForm = false;
   var formSubmitted = false;
+  var lastUpdateId = 0;
+  var messageInterval;
 
   function sendMessage() {
     var input = document.getElementById('chatInput');
@@ -95,6 +164,8 @@
         botMsg.textContent = 'Por favor completa el formulario antes de enviar más mensajes.';
         messagesDiv.appendChild(botMsg);
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      } else {
+        sendToTelegram(message);
       }
     }
   }
@@ -188,6 +259,7 @@
       
       if (data.status === 'success') {
         formSubmitted = true;
+        startMessagePolling();
         botMsg.textContent = '✅ Información enviada correctamente. Un asesor se comunicará contigo pronto.';
       } else {
         botMsg.textContent = '❌ Error al enviar. Intenta nuevamente.';

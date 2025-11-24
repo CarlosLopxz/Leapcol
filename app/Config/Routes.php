@@ -16,6 +16,7 @@ $routes->get('/productos/pos', 'Productos::pos');
 $routes->get('/productos/ecommerce', 'Productos::ecommerce');
 $routes->get('/sobre-nosotros', 'SobreNosotros::index');
 $routes->post('/telegram/send', 'Telegram::sendMessage');
+$routes->get('/telegram/messages', 'Telegram::getMessages');
 
 // Rutas de autenticación
 $routes->get('/login', 'AuthController::login');

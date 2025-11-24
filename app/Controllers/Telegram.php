@@ -42,8 +42,49 @@ class Telegram extends Controller
         if ($response && $response['ok']) {
             return $this->response->setJSON(['status' => 'success', 'message' => 'Mensaje enviado correctamente.']);
         } else {
-            // Log error for debugging if needed
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Error al enviar el mensaje. Asegúrate de que el bot esté configurado.']);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Error al enviar el mensaje.']);
         }
+    }
+
+    public function getMessages()
+    {
+        $lastUpdateId = $this->request->getGet('last_update_id') ?: 0;
+        
+        $url = "https://api.telegram.org/bot{$this->botToken}/getUpdates";
+        $data = [
+            'offset' => $lastUpdateId + 1,
+            'limit' => 10
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url . '?' . http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        $response = json_decode($result, true);
+        $messages = [];
+        $newLastUpdateId = $lastUpdateId;
+
+        if ($response && $response['ok'] && !empty($response['result'])) {
+            foreach ($response['result'] as $update) {
+                if (isset($update['message']) && 
+                    $update['message']['chat']['id'] == $this->chatId &&
+                    !$update['message']['from']['is_bot']) {
+                    $messages[] = [
+                        'text' => $update['message']['text'],
+                        'from' => $update['message']['from']['first_name'] ?? 'Asesor',
+                        'date' => $update['message']['date']
+                    ];
+                    $newLastUpdateId = $update['update_id'];
+                }
+            }
+        }
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'messages' => $messages,
+            'last_update_id' => $newLastUpdateId
+        ]);
     }
 }
