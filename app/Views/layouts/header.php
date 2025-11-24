@@ -37,7 +37,7 @@
                         </div>
                         <div class="d-none d-lg-block">
                             <div class="row align-items-center g-6">
-                                <div class="col-auto"><a class="link-secondary fs-11 fw-medium" href="login.html">Registrase</a></div>
+                                <div class="col-auto"><a class="link-secondary fs-11 fw-medium" href="<?= base_url() ?>register">Registrase</a></div>
                                 <div class="col-auto"><a class="btn btn-sm btn-danger shadow" href="<?= base_url() ?>login">Iniciar Sesión</a>
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ class UserModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['email', 'password', 'estado', 'rol'];
+    protected $allowedFields = ['name', 'email', 'password', 'estado', 'rol'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -29,6 +29,7 @@ class UserModel extends Model
 
     // Validation
     protected $validationRules = [
+        'name' => 'required|min_length[2]|max_length[100]',
         'email' => 'required|valid_email|is_unique[users.email]',
         'password' => 'required|min_length[6]',
         'estado' => 'in_list[activo,inactivo]',

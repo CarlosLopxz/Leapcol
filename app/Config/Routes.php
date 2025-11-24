@@ -22,6 +22,10 @@ $routes->get('/telegram/messages', 'Telegram::getMessages');
 $routes->get('/login', 'AuthController::login');
 $routes->post('/login', 'AuthController::authenticate');
 $routes->get('/logout', 'AuthController::logout');
+$routes->get('/register', 'AuthController::register');
+$routes->post('/register', 'AuthController::store');
+$routes->get('/auth/google', 'AuthController::googleLogin');
+$routes->get('/auth/google/callback', 'AuthController::googleCallback');
 
 // Rutas de dashboards
 $routes->get('/cliente/dashboard', 'ClienteController::dashboard', ['filter' => 'auth']);

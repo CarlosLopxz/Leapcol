@@ -302,118 +302,119 @@
 </style>
 </head>
 
-    <div class="container">
-        <div class="catalog-header">
-            <h1>Catálogo de Software</h1>
-            <p>Descubre las mejores soluciones para tu negocio</p>
-        </div>
+<div class="container">
+    <div class="catalog-header">
+        <h1>Catálogo de Software</h1>
+        <p>Descubre las mejores soluciones para tu negocio</p>
+    </div>
 
-        <!-- Category Filters -->
-        <div class="category-filters">
-            <div class="filter-title">
-                <i class="fas fa-filter"></i>
-                Filtrar por Categoría
-            </div>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-category="all">
-                    <i class="fas fa-th"></i> Todos
-                </button>
-                <?php if (!empty($categorias)): ?>
-                    <?php foreach ($categorias as $categoria): ?>
-                        <button class="filter-btn" data-category="<?= $categoria['id'] ?>">
-                            <?= $categoria['nombre'] ?>
-                        </button>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+    <!-- Category Filters -->
+    <div class="category-filters">
+        <div class="filter-title">
+            <i class="fas fa-filter"></i>
+            Filtrar por Categoría
         </div>
-
-        <div class="row g-4 mb-5" id="productos-container" style="min-height: 500px;">
-            <?php if (!empty($productos)): ?>
-                <?php foreach ($productos as $producto): ?>
-                    <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <?php if (!empty($producto['imagen_principal'])): ?>
-                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
-                                        alt="<?= $producto['nombre'] ?>" style="width: 100%; height: 100%; object-fit: cover;">
-                                <?php else: ?>
-                                    <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
-                                <?php endif; ?>
-                                <?php if ($producto['mas_vendido']): ?>
-                                    <span class="product-badge">Más Vendido</span>
-                                <?php endif; ?>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
-                                <h3 class="product-name"><?= $producto['nombre'] ?></h3>
-                                <p class="product-description">
-                                    <?= $producto['descripcion'] ?>
-                                </p>
-                                <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-box"></i> Stock: <?= $producto['stock'] ?></span>
-                                    <?php if ($producto['precio_oferta']): ?>
-                                        <span class="feature-tag"><i class="fas fa-tag"></i> Oferta</span>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="product-footer">
-                                    <div class="product-price">
-                                        <?php if ($producto['precio_oferta']): ?>
-                                            <span
-                                                style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 2) ?></span>
-                                            $<?= number_format($producto['precio_oferta'], 2) ?>
-                                        <?php else: ?>
-                                            $<?= number_format($producto['precio'], 2) ?>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="btn-group-actions">
-                                        <button class="btn-minimal btn-buy">
-                                            <i class="fas fa-shopping-cart"></i> Comprar
-                                        </button>
-                                        <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>" class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
-                                            <i class="fas fa-info-circle me-2"></i> Detalles
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">
+                <i class="fas fa-th"></i> Todos
+            </button>
+            <?php if (!empty($categorias)): ?>
+                <?php foreach ($categorias as $categoria): ?>
+                    <button class="filter-btn" data-category="<?= $categoria['id'] ?>">
+                        <?= $categoria['nombre'] ?>
+                    </button>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <div class="col-12 text-center">
-                    <p>No hay productos disponibles</p>
-                </div>
             <?php endif; ?>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Category Filter Functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productItems = document.querySelectorAll('.product-item');
+    <div class="row g-4 mb-5" id="productos-container" style="min-height: 500px;">
+        <?php if (!empty($productos)): ?>
+            <?php foreach ($productos as $producto): ?>
+                <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <?php if (!empty($producto['imagen_principal'])): ?>
+                                <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
+                                    alt="<?= $producto['nombre'] ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                            <?php else: ?>
+                                <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
+                            <?php endif; ?>
+                            <?php if ($producto['mas_vendido']): ?>
+                                <span class="product-badge">Más Vendido</span>
+                            <?php endif; ?>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
+                            <h3 class="product-name"><?= $producto['nombre'] ?></h3>
+                            <p class="product-description">
+                                <?= $producto['descripcion'] ?>
+                            </p>
+                            <div class="product-features">
+                                <span class="feature-tag"><i class="fas fa-box"></i> Stock: <?= $producto['stock'] ?></span>
+                                <?php if ($producto['precio_oferta']): ?>
+                                    <span class="feature-tag"><i class="fas fa-tag"></i> Oferta</span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <?php if ($producto['precio_oferta']): ?>
+                                        <span
+                                            style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 2) ?></span>
+                                        $<?= number_format($producto['precio_oferta'], 2) ?>
+                                    <?php else: ?>
+                                        $<?= number_format($producto['precio'], 2) ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="btn-group-actions">
+                                    <button class="btn-minimal btn-buy">
+                                        <i class="fas fa-shopping-cart"></i> Comprar
+                                    </button>
+                                    <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
+                                        class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-info-circle me-2"></i> Detalles
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12 text-center">
+                <p>No hay productos disponibles</p>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Category Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productItems = document.querySelectorAll('.product-item');
 
-                const category = this.getAttribute('data-category');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
 
-                // Filter products without delay to prevent layout jumps
-                productItems.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                        }, 10);
-                    } else {
-                        item.style.display = 'none';
-                        item.style.opacity = '0';
-                    }
-                });
+            const category = this.getAttribute('data-category');
+
+            // Filter products without delay to prevent layout jumps
+            productItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                    }, 10);
+                } else {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                }
             });
         });
-    </script>
+    });
+</script>
 <?= $this->include('layouts/footer') ?>
