@@ -62,6 +62,9 @@
     }
   }
 
+  var hasShownForm = false;
+  var formSubmitted = false;
+
   function sendMessage() {
     var input = document.getElementById('chatInput');
     var message = input.value.trim();
@@ -80,44 +83,168 @@
       messagesDiv.appendChild(userMsgContainer);
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-      var originalValue = input.value;
       input.value = '';
-      input.disabled = true;
 
-      // Enviar al backend
-      fetch('<?= base_url("telegram/send") ?>', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: 'message=' + encodeURIComponent(message)
-      })
-        .then(response => response.json())
-        .then(data => {
-          input.disabled = false;
-          input.focus();
-
-          var botMsg = document.createElement('div');
-          botMsg.style.cssText = 'background: #e5e7eb; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
-
-          if (data.status === 'success') {
-            botMsg.textContent = 'Mensaje enviado. Un asesor te contactará pronto.';
-          } else {
-            botMsg.textContent = 'Error: ' + data.message;
-          }
-          messagesDiv.appendChild(botMsg);
-          messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        })
-        .catch(error => {
-          input.disabled = false;
-          console.error('Error:', error);
-          var botMsg = document.createElement('div');
-          botMsg.style.cssText = 'background: #fee2e2; color: #991b1b; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
-          botMsg.textContent = 'Error de conexión. Intenta nuevamente.';
-          messagesDiv.appendChild(botMsg);
-        });
+      if (!hasShownForm) {
+        showContactForm(message);
+        hasShownForm = true;
+      } else if (!formSubmitted) {
+        var messagesDiv = document.getElementById('chatMessages');
+        var botMsg = document.createElement('div');
+        botMsg.style.cssText = 'background: #e5e7eb; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
+        botMsg.textContent = 'Por favor completa el formulario antes de enviar más mensajes.';
+        messagesDiv.appendChild(botMsg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
     }
+  }
+
+  function showContactForm(originalMessage) {
+    var messagesDiv = document.getElementById('chatMessages');
+    
+    // Mostrar indicador de "escribiendo"
+    var typingMsg = document.createElement('div');
+    typingMsg.id = 'typingIndicator';
+    typingMsg.style.cssText = 'background: #e5e7eb; padding: 6px 10px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
+    typingMsg.innerHTML = '<span class="typing-dots"><span style="font-size: 18px;">.</span><span style="font-size: 18px;">.</span><span style="font-size: 18px;">.</span></span>';
+    messagesDiv.appendChild(typingMsg);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    // Agregar CSS para animación de puntos
+    if (!document.getElementById('typingCSS')) {
+      var style = document.createElement('style');
+      style.id = 'typingCSS';
+      style.textContent = `
+        .typing-dots span {
+          animation: typing 1.4s infinite;
+        }
+        .typing-dots span:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .typing-dots span:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+        .typing-dots span:nth-child(4) {
+          animation-delay: 0.6s;
+        }
+        @keyframes typing {
+          0%, 60%, 100% { opacity: 0.3; }
+          30% { opacity: 1; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Después de 2 segundos, mostrar el formulario
+    setTimeout(() => {
+      typingMsg.remove();
+      
+      var botMsg = document.createElement('div');
+      botMsg.style.cssText = 'background: #e5e7eb; padding: 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 90%;';
+      botMsg.innerHTML = `
+        <p style="margin: 0 0 12px 0; font-weight: 500;">Antes de que un asesor se comunique contigo, por favor llena este formulario:</p>
+        <form id="contactForm" style="display: flex; flex-direction: column; gap: 8px;">
+          <input type="text" id="userName" placeholder="Tu nombre completo" required style="padding: 6px 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 12px;">
+          <input type="tel" id="userPhone" placeholder="Número de teléfono" required style="padding: 6px 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 12px;">
+          <textarea id="userSpecs" placeholder="Especificaciones del soporte que necesitas" required style="padding: 6px 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 12px; resize: vertical; min-height: 40px;"></textarea>
+          <button type="button" onclick="event.stopPropagation(); submitContactForm('${originalMessage}')" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; margin-top: 4px;">Enviar información</button>
+        </form>
+      `;
+      messagesDiv.appendChild(botMsg);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }, 2000);
+  }
+
+  function submitContactForm(originalMessage) {
+    var name = document.getElementById('userName').value.trim();
+    var phone = document.getElementById('userPhone').value.trim();
+    var specs = document.getElementById('userSpecs').value.trim();
+
+    if (!name || !phone || !specs) {
+      alert('Por favor completa todos los campos');
+      return;
+    }
+
+    var fullMessage = `📋 SOLICITUD DE SOPORTE\n\n👤 Nombre: ${name}\n📞 Teléfono: ${phone}\n💬 Mensaje inicial: ${originalMessage}\n📝 Especificaciones: ${specs}`;
+
+    var formElement = document.getElementById('contactForm');
+    formElement.innerHTML = '<p style="margin: 0; color: #059669;">Enviando información...</p>';
+
+    fetch('<?= base_url("telegram/send") ?>', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: 'message=' + encodeURIComponent(fullMessage) + '&contact=' + encodeURIComponent(name)
+    })
+    .then(response => response.json())
+    .then(data => {
+      formElement.style.display = 'none';
+      
+      var messagesDiv = document.getElementById('chatMessages');
+      var botMsg = document.createElement('div');
+      botMsg.style.cssText = 'background: #dcfce7; color: #166534; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
+      
+      if (data.status === 'success') {
+        formSubmitted = true;
+        botMsg.textContent = '✅ Información enviada correctamente. Un asesor se comunicará contigo pronto.';
+      } else {
+        botMsg.textContent = '❌ Error al enviar. Intenta nuevamente.';
+      }
+      messagesDiv.appendChild(botMsg);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    })
+    .catch(error => {
+      formElement.style.display = 'none';
+      
+      console.error('Error:', error);
+      var messagesDiv = document.getElementById('chatMessages');
+      var botMsg = document.createElement('div');
+      botMsg.style.cssText = 'background: #fee2e2; color: #991b1b; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
+      botMsg.textContent = '❌ Error de conexión. Intenta nuevamente.';
+      messagesDiv.appendChild(botMsg);
+    });
+  }
+
+  function sendToTelegram(message) {
+    var input = document.getElementById('chatInput');
+    input.disabled = true;
+
+    fetch('<?= base_url("telegram/send") ?>', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: 'message=' + encodeURIComponent(message)
+    })
+    .then(response => response.json())
+    .then(data => {
+      input.disabled = false;
+      input.focus();
+
+      var messagesDiv = document.getElementById('chatMessages');
+      var botMsg = document.createElement('div');
+      botMsg.style.cssText = 'background: #e5e7eb; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
+
+      if (data.status === 'success') {
+        botMsg.textContent = 'Mensaje enviado. Un asesor te contactará pronto.';
+      } else {
+        botMsg.textContent = 'Error: ' + data.message;
+      }
+      messagesDiv.appendChild(botMsg);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    })
+    .catch(error => {
+      input.disabled = false;
+      console.error('Error:', error);
+      var messagesDiv = document.getElementById('chatMessages');
+      var botMsg = document.createElement('div');
+      botMsg.style.cssText = 'background: #fee2e2; color: #991b1b; padding: 8px 12px; border-radius: 12px; margin-bottom: 8px; font-size: 13px; max-width: 80%;';
+      botMsg.textContent = 'Error de conexión. Intenta nuevamente.';
+      messagesDiv.appendChild(botMsg);
+    });
   }
 
   document.addEventListener('click', function (e) {
@@ -125,7 +252,7 @@
     var chatBtn = document.getElementById('chatBtn');
     var chatWindow = document.getElementById('chatWindow');
 
-    if (!chatWidget.contains(e.target) && chatWindow.style.display === 'block') {
+    if (!chatWidget.contains(e.target) && chatWindow.style.display === 'block' && !e.target.closest('#contactForm')) {
       chatWindow.style.display = 'none';
     }
   });

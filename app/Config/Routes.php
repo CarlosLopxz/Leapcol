@@ -23,11 +23,11 @@ $routes->post('/login', 'AuthController::authenticate');
 $routes->get('/logout', 'AuthController::logout');
 
 // Rutas de dashboards
-$routes->get('/cliente/dashboard', 'ClienteController::dashboard');
-$routes->get('/admin/dashboard', 'AdminController::dashboard');
+$routes->get('/cliente/dashboard', 'ClienteController::dashboard', ['filter' => 'auth']);
+$routes->get('/admin/dashboard', 'AdminController::dashboard', ['filter' => 'admin']);
 
 // Rutas Admin
-$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'admin'], function ($routes) {
     $routes->get('dashboard', 'Dashboard::index');
     $routes->get('productos', 'Productos::index');
     $routes->get('productos/crear', 'Productos::crear');
@@ -40,4 +40,12 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
     $routes->post('categorias/guardar', 'Categorias::guardar');
     $routes->get('categorias/editar/(:num)', 'Categorias::editar/$1');
     $routes->get('categorias/eliminar/(:num)', 'Categorias::eliminar/$1');
+
+    // Rutas de Usuarios
+    $routes->get('usuarios', 'Usuarios::index');
+    $routes->get('usuarios/crear', 'Usuarios::crear');
+    $routes->post('usuarios/guardar', 'Usuarios::guardar');
+    $routes->get('usuarios/editar/(:num)', 'Usuarios::editar/$1');
+    $routes->post('usuarios/actualizar/(:num)', 'Usuarios::actualizar/$1');
+    $routes->get('usuarios/eliminar/(:num)', 'Usuarios::eliminar/$1');
 });
