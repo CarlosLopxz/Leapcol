@@ -63,4 +63,14 @@ class ProductoModel extends Model
             ->orderBy('id', 'DESC')
             ->findAll($limit);
     }
+
+    public function getProductosRelacionados($categoriaId, $excludeId, $limit = 4)
+    {
+        return $this->select('productos.*, categorias.nombre as categoria_nombre')
+            ->join('categorias', 'categorias.id = productos.categoria_id')
+            ->where('categoria_id', $categoriaId)
+            ->where('productos.id !=', $excludeId)
+            ->where('productos.estado', 'activo')
+            ->findAll($limit);
+    }
 }

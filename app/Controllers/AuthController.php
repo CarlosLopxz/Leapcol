@@ -154,7 +154,7 @@ class AuthController extends BaseController
             } else {
                 // Crear nuevo usuario
                 $userData = [
-                    'name' => $userInfo->name,
+                    'name' => $userInfo->name ?? $userInfo->email,
                     'email' => $userInfo->email,
                     'password' => password_hash(uniqid(), PASSWORD_DEFAULT), // Password temporal
                     'estado' => 'activo',
@@ -171,7 +171,7 @@ class AuthController extends BaseController
                         'logged_in' => true
                     ]);
                     
-                    return redirect()->to('/cliente/dashboard')->with('swal_success', 'Bienvenido! Tu cuenta ha sido creada exitosamente.');
+                    return view('Auth/creating_account', ['redirectUrl' => base_url('/cliente/dashboard')]);
                 } else {
                     return redirect()->to('/login')->with('swal_error', 'Error al crear la cuenta');
                 }

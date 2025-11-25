@@ -44,7 +44,8 @@ class Productos extends BaseController
 
         $data = [
             'title' => $producto['nombre'] . ' - Leapcol',
-            'producto' => $producto
+            'producto' => $producto,
+            'relacionados' => $this->productoModel->getProductosRelacionados($producto['categoria_id'], $producto['id'])
         ];
 
         return view('productos/detalle', $data);
