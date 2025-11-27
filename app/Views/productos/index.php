@@ -367,7 +367,7 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <a href="<?= base_url('prueba-gratis') ?>"
+                                    <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
                                         class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
                                         <i class="fas fa-rocket me-2"></i> Prueba Gratis
                                     </a>

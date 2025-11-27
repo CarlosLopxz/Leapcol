@@ -17,6 +17,9 @@ $routes->get('/productos/pos', 'Productos::pos');
 $routes->get('/productos/ecommerce', 'Productos::ecommerce');
 $routes->get('/sobre-nosotros', 'SobreNosotros::index');
 $routes->get('/prueba-gratis', 'PruebaGratis::index');
+$routes->get('/prueba-gratis/(:num)', 'PruebaGratis::index/$1');
+$routes->get('/prueba-gratis/activar/(:num)', 'PruebaGratis::activar/$1');
+$routes->get('/prueba-gratis/cancelar/(:num)', 'PruebaGratis::cancelar/$1');
 $routes->post('/telegram/send', 'Telegram::sendMessage');
 $routes->get('/telegram/messages', 'Telegram::getMessages');
 

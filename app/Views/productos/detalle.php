@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="d-grid gap-3">
-                                <a href="<?= base_url('prueba-gratis') ?>"
+                                <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
                                     class="btn btn-danger btn-lg fs-9 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
                                     <i class="fas fa-rocket"></i>
                                     Prueba Gratis por 14 días
