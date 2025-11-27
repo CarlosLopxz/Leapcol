@@ -366,14 +366,20 @@
                                         $<?= number_format($producto['precio'], 2) ?>
                                     <?php endif; ?>
                                 </div>
-                                <div class="btn-group-actions">
-                                    <button class="btn-minimal btn-buy">
-                                        <i class="fas fa-shopping-cart"></i> Comprar
-                                    </button>
-                                    <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
-                                        class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-info-circle me-2"></i> Detalles
+                                <div class="d-grid gap-2">
+                                    <a href="<?= base_url('prueba-gratis') ?>"
+                                        class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-rocket me-2"></i> Prueba Gratis
                                     </a>
+                                    <div class="btn-group-actions">
+                                        <button class="btn-minimal btn-details">
+                                            <i class="fas fa-shopping-cart me-2"></i> Comprar
+                                        </button>
+                                        <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
+                                            class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-info-circle me-2"></i> Detalles
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

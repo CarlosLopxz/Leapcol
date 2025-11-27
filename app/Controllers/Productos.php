@@ -24,7 +24,7 @@ class Productos extends BaseController
             'categorias' => $this->categoriaModel->getCategoriasActivas()
         ];
 
-        return view('productos/index', $data);
+        return $this->renderView('productos/index', $data);
     }
 
     public function detalle($id)
@@ -48,26 +48,26 @@ class Productos extends BaseController
             'relacionados' => $this->productoModel->getProductosRelacionados($producto['categoria_id'], $producto['id'])
         ];
 
-        return view('productos/detalle', $data);
+        return $this->renderView('productos/detalle', $data);
     }
 
     public function erp()
     {
-        return view('productos/erp');
+        return $this->renderView('productos/erp');
     }
 
     public function crm()
     {
-        return view('productos/crm');
+        return $this->renderView('productos/crm');
     }
 
     public function pos()
     {
-        return view('productos/pos');
+        return $this->renderView('productos/pos');
     }
 
     public function ecommerce()
     {
-        return view('productos/ecommerce');
+        return $this->renderView('productos/ecommerce');
     }
 }

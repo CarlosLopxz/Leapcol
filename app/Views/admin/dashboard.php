@@ -28,6 +28,7 @@
                     </ul>
                     <div>
                       <div class="btn-wrapper">
+                        <a href="<?= base_url() ?>" class="btn btn-danger text-white me-2"><i class="mdi mdi-home"></i> Ir a Landing</a>
                         <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
                         <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
                         <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>

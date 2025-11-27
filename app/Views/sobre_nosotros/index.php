@@ -199,13 +199,13 @@
         <div class="row g-8 text-center">
             <div class="col-12 col-md-3">
                 <div class="p-6">
-                    <h3 class="font-heading fs-3 text-danger mb-2">500+</h3>
+                    <h3 class="font-heading fs-3 text-danger mb-2">100+</h3>
                     <p class="mb-0 fs-9 fw-medium text-secondary">Clientes activos</p>
                 </div>
             </div>
             <div class="col-12 col-md-3">
                 <div class="p-6">
-                    <h3 class="font-heading fs-3 text-danger mb-2">99.9%</h3>
+                    <h3 class="font-heading fs-3 text-danger mb-2">90%</h3>
                     <p class="mb-0 fs-9 fw-medium text-secondary">Tiempo de actividad</p>
                 </div>
             </div>
@@ -217,7 +217,7 @@
             </div>
             <div class="col-12 col-md-3">
                 <div class="p-6">
-                    <h3 class="font-heading fs-3 text-danger mb-2">5 años</h3>
+                    <h3 class="font-heading fs-3 text-danger mb-2">3 años</h3>
                     <p class="mb-0 fs-9 fw-medium text-secondary">En el mercado</p>
                 </div>
             </div>

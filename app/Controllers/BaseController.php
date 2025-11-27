@@ -41,7 +41,8 @@ abstract class BaseController extends Controller
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
-    // protected $session;
+    protected $session;
+    protected $data = [];
 
     /**
      * @return void
@@ -52,7 +53,46 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = service('session');
+        $this->session = service('session');
+        
+        // Configurar datos de sesión globales para todas las vistas
+        $this->setSessionData();
+    }
+    
+    /**
+     * Configura los datos de sesión para todas las vistas
+     */
+    protected function setSessionData()
+    {
+        $isLoggedIn = $this->session->get('logged_in') ?? false;
+        $userName = '';
+        $userRole = '';
+        $panelUrl = '';
+        
+        if ($isLoggedIn) {
+            $userModel = new \App\Models\UserModel();
+            $user = $userModel->find($this->session->get('user_id'));
+            if ($user) {
+                $userName = $user['name'];
+                $userRole = $user['rol'];
+                $panelUrl = $userRole === 'administrador' ? '/admin/dashboard' : '/cliente/dashboard';
+            }
+        }
+        
+        // Hacer estos datos disponibles globalmente para todas las vistas
+        $this->data = [
+            'isLoggedIn' => $isLoggedIn,
+            'userName' => $userName,
+            'userRole' => $userRole,
+            'panelUrl' => $panelUrl
+        ];
+    }
+    
+    /**
+     * Renderiza una vista con los datos de sesión incluidos
+     */
+    protected function renderView(string $view, array $data = []): string
+    {
+        return view($view, array_merge($this->data, $data));
     }
 }

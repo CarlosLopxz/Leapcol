@@ -14,6 +14,16 @@
             
             <div class="tab-content tab-content-basic">
               <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                <!-- Botón para ir a la landing -->
+                <div class="row mb-4">
+                  <div class="col-12">
+                    <div class="d-flex justify-content-end">
+                      <a href="<?= base_url() ?>" class="btn btn-danger text-white">
+                        <i class="mdi mdi-home me-2"></i>Ir a Landing
+                      </a>
+                    </div>
+                  </div>
+                </div>
                 <!-- INFORMACION DE SOFTWARE ALQUILADO -->
                 <div class="row">
                   <div class="col-12">

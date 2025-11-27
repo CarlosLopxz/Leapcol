@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/contacto', 'Contacto::index');
+$routes->post('/contacto/enviar', 'Contacto::enviar');
 $routes->get('/productos', 'Productos::index');
 $routes->get('/productos/detalle/(:num)', 'Productos::detalle/$1');
 $routes->get('/productos/erp', 'Productos::erp');
@@ -15,6 +16,7 @@ $routes->get('/productos/crm', 'Productos::crm');
 $routes->get('/productos/pos', 'Productos::pos');
 $routes->get('/productos/ecommerce', 'Productos::ecommerce');
 $routes->get('/sobre-nosotros', 'SobreNosotros::index');
+$routes->get('/prueba-gratis', 'PruebaGratis::index');
 $routes->post('/telegram/send', 'Telegram::sendMessage');
 $routes->get('/telegram/messages', 'Telegram::getMessages');
 

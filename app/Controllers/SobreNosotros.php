@@ -6,7 +6,7 @@ class SobreNosotros extends BaseController
 {
     public function index(): string
     {
-        $title = 'Sobre Nosotros - Leapcol';
-        return view('sobre_nosotros/index', compact('title'));
+        $data = ['title' => 'Sobre Nosotros - Leapcol'];
+        return $this->renderView('sobre_nosotros/index', $data);
     }
 }

@@ -8,10 +8,12 @@ class Home extends BaseController
     {
         helper('text');
         $productoModel = new \App\Models\ProductoModel();
+        
         $data = [
             'title' => 'Inicio - Leapcol',
             'productos' => $productoModel->getRecentProducts(6)
         ];
-        return view('home', $data);
+        
+        return $this->renderView('home', $data);
     }
 }

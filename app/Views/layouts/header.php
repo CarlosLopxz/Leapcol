@@ -7,6 +7,39 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:400,500,600,700,800,900&amp;subset=latin" />
     <link rel="stylesheet" href="<?= media_url() ?>css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background-color: #f8f9fa;
+            border-radius: 0.375rem;
+            border: 1px solid #e9ecef;
+        }
+        .user-info i {
+            color: #6c757d;
+        }
+        .btn-panel {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .btn-logout {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        @media (max-width: 991.98px) {
+            .user-info {
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                justify-content: flex-start;
+            }
+        }
+    </style>
     <link rel="icon" type="image/png" sizes="32x32" href="<?= media_url() ?>img/icono.png" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -17,7 +50,7 @@
         <div>
             <section class="overflow-hidden">
                 <nav class="navbar navbar-dark navbar-expand-lg bg-white py-5 py-lg-1 container">
-                    <div class="container-fluid"><a class="navbar-brand" href="index.html"><img class="img-fluid " src="<?= media_url() ?>img/Logo.png"
+                    <div class="container-fluid"><a class="navbar-brand" href="<?= base_url() ?>"><img class="img-fluid " src="<?= media_url() ?>img/Logo.png"
                                 alt="logo leapcol" width="300px" /></a>
                         <div class="collapse navbar-collapse justify-content-center">
                             <ul class="navbar-nav">
@@ -36,11 +69,36 @@
                             </ul>
                         </div>
                         <div class="d-none d-lg-block">
-                            <div class="row align-items-center g-6">
-                                <div class="col-auto"><a class="link-secondary fs-11 fw-medium" href="<?= base_url() ?>register">Registrase</a></div>
-                                <div class="col-auto"><a class="btn btn-sm btn-danger shadow" href="<?= base_url() ?>login">Iniciar Sesión</a>
+                            <?php if (isset($isLoggedIn) && $isLoggedIn): ?>
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="user-info">
+                                            <i class="fas fa-user-circle"></i>
+                                            <span class="text-dark fs-11 fw-medium">
+                                                Hola, <?= esc($userName) ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="btn btn-sm btn-danger shadow btn-panel" href="<?= base_url($panelUrl) ?>">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            Panel
+                                        </a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="btn btn-sm btn-outline-secondary btn-logout" href="<?= base_url('logout') ?>">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                            Salir
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php else: ?>
+                                <div class="row align-items-center g-6">
+                                    <div class="col-auto"><a class="link-secondary fs-11 fw-medium" href="<?= base_url() ?>register">Registrase</a></div>
+                                    <div class="col-auto"><a class="btn btn-sm btn-danger shadow" href="<?= base_url() ?>login">Iniciar Sesión</a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="d-lg-none"><a class="btn navbar-burger p-0" href="#">
                                 <svg width="35" height="35" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +113,7 @@
                     <div class="navbar-backdrop position-fixed top-0 start-0 end-0 bottom-0 bg-dark" style="opacity: 75%;"></div>
                     <nav
                         class="position-relative h-100 w-100 d-flex flex-column justify-content-between p-6 bg-white overflow-auto">
-                        <div class="d-flex align-items-center"><a class="me-auto h4 mb-0 text-decoration-none" href="#"><img
+                        <div class="d-flex align-items-center"><a class="me-auto h4 mb-0 text-decoration-none" href="<?= base_url() ?>"><img
                                     class="img-fluid" src="<?= media_url() ?>img/Logo.png" alt="" width="200" /></a> <a class="navbar-close text-secondary" href="#">
                                 <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -64,23 +122,49 @@
                         <div class="py-16">
                             <ul class="nav nav-pills flex-column">
                                  <li class="nav-item p-2">
-                                    <a class="nav-link link-secondary" href="index.html">Inicio</a>
+                                    <a class="nav-link link-secondary" href="<?= base_url() ?>">Inicio</a>
                                 </li>
                                 <li class="nav-item p-2">
-                                    <a class="nav-link link-secondary" href="servicios.html">Productos</a>
+                                    <a class="nav-link link-secondary" href="<?= base_url() ?>productos">Productos</a>
                                 </li>
                                 <li class="nav-item p-2">
-                                    <a class="nav-link link-secondary" href="about.html">Sobre nosotros</a>
+                                    <a class="nav-link link-secondary" href="<?= base_url() ?>sobre-nosotros">Sobre nosotros</a>
                                 </li>
                                 <li class="nav-item p-2">
-                                    <a class="nav-link link-secondary" href="contacto.html">Contacto</a>
+                                    <a class="nav-link link-secondary" href="<?= base_url() ?>contacto">Contacto</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="row align-items-center g-6">
-                            <div class="col-auto"><a class="link-secondary fs-11 fw-medium" href="login.html">Registrase</a></div>
-                            <div class="col-auto"><a class="btn btn-sm btn-danger shadow" href="register.html">Iniciar Sesión</a>
+                        <?php if (isset($isLoggedIn) && $isLoggedIn): ?>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 mb-3">
+                                    <div class="user-info">
+                                        <i class="fas fa-user-circle"></i>
+                                        <span class="text-dark fs-11 fw-medium">
+                                            Hola, <?= esc($userName) ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <a class="btn btn-sm btn-danger shadow btn-panel" href="<?= base_url($panelUrl) ?>">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        Panel
+                                    </a>
+                                </div>
+                                <div class="col-auto">
+                                    <a class="btn btn-sm btn-outline-secondary btn-logout" href="<?= base_url('logout') ?>">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Salir
+                                    </a>
+                                </div>
                             </div>
+                        <?php else: ?>
+                            <div class="row align-items-center g-6">
+                                <div class="col-auto"><a class="link-secondary fs-11 fw-medium" href="<?= base_url() ?>register">Registrase</a></div>
+                                <div class="col-auto"><a class="btn btn-sm btn-danger shadow" href="<?= base_url() ?>login">Iniciar Sesión</a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </nav>
                 </div>
             </section>
