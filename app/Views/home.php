@@ -54,7 +54,7 @@
               <p class="fw-medium text-secondary fs-10 mb-6">
                 Sin tarjeta • Cancela cuando quieras • Todo incluido
               </p>
-              <a href="#"
+              <a href="<?= base_url('productos') ?>"
                 class="btn btn-lg btn-danger fs-10 w-100 mb-6 py-3 shadow-lg fw-bold d-block text-white text-decoration-none">
                 Descubre tu sistema
               </a>

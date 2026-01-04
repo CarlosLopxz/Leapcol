@@ -6,8 +6,14 @@ class Contacto extends BaseController
 {
     public function index(): string
     {
-        $title = 'Contacto - Leapcol';
-        return view('contacto/index', compact('title'));
+        $data = [
+            'title' => 'Contacto - Leapcol',
+            'isLoggedIn' => session()->get('logged_in') ?? false,
+            'userName' => session()->get('name') ?? '',
+            'panelUrl' => session()->get('rol') === 'administrador' ? 'admin/dashboard' : 'cliente/dashboard'
+        ];
+        
+        return view('contacto/index', $data);
     }
 
     public function enviar()

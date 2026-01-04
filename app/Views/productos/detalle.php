@@ -69,12 +69,12 @@
                                 <div class="d-flex align-items-center gap-3 mb-6">
                                     <?php if ($producto['precio_oferta'] > 0): ?>
                                         <span
-                                            class="fs-5 fw-bold text-danger">$<?= number_format($producto['precio_oferta'], 0, ',', '.') ?></span>
+                                            class="fs-5 fw-bold text-danger">$<?= number_format($producto['precio_oferta'], 0, ',', '.') ?><small class="fs-8 text-muted">/mes</small></span>
                                         <span
                                             class="fs-7 text-secondary text-decoration-line-through">$<?= number_format($producto['precio'], 0, ',', '.') ?></span>
                                     <?php else: ?>
                                         <span
-                                            class="fs-5 fw-bold text-dark">$<?= number_format($producto['precio'], 0, ',', '.') ?></span>
+                                            class="fs-5 fw-bold text-dark">$<?= number_format($producto['precio'], 0, ',', '.') ?><small class="fs-8 text-muted">/mes</small></span>
                                     <?php endif; ?>
                                 </div>
                                 <p class="fs-10 text-secondary mb-8" style="line-height: 1.4; letter-spacing: normal;">
@@ -207,10 +207,10 @@
                                     <span class="text-decoration-line-through text-muted fw-bold opacity-50"
                                         style="font-size: 0.85rem;">$<?= number_format($relacionado['precio'], 0, ',', '.') ?></span>
                                     <span class="fw-bold text-dark lh-1"
-                                        style="font-size: 1.25rem;">$<?= number_format($relacionado['precio_oferta'], 0, ',', '.') ?></span>
+                                        style="font-size: 1.25rem;">$<?= number_format($relacionado['precio_oferta'], 0, ',', '.') ?><small class="text-muted">/mes</small></span>
                                 <?php else: ?>
                                     <span class="fw-bold text-dark lh-1"
-                                        style="font-size: 1.25rem;">$<?= number_format($relacionado['precio'], 0, ',', '.') ?></span>
+                                        style="font-size: 1.25rem;">$<?= number_format($relacionado['precio'], 0, ',', '.') ?><small class="text-muted">/mes</small></span>
                                 <?php endif; ?>
                             </div>
 

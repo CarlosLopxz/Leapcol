@@ -360,10 +360,10 @@
                                 <div class="product-price">
                                     <?php if ($producto['precio_oferta']): ?>
                                         <span
-                                            style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 2) ?></span>
-                                        $<?= number_format($producto['precio_oferta'], 2) ?>
+                                            style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 0, ',', '.') ?></span>
+                                        $<?= number_format($producto['precio_oferta'], 0, ',', '.') ?><span class="price-period">/mes</span>
                                     <?php else: ?>
-                                        $<?= number_format($producto['precio'], 2) ?>
+                                        $<?= number_format($producto['precio'], 0, ',', '.') ?><span class="price-period">/mes</span>
                                     <?php endif; ?>
                                 </div>
                                 <div class="d-grid gap-2">
@@ -421,10 +421,33 @@
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="col-12 text-center">
-                <p>No hay productos disponibles</p>
+            <div class="col-12 text-center py-5">
+                <div class="card border-0">
+                    <div class="card-body py-5">
+                        <i class="fas fa-box-open fa-4x text-muted mb-4"></i>
+                        <h4 class="text-muted mb-3">No hay sistemas en esta categoría</h4>
+                        <p class="text-muted mb-4">Actualmente no tenemos productos disponibles en esta categoría.</p>
+                        <a href="<?= base_url('productos') ?>" class="btn btn-danger">
+                            <i class="fas fa-arrow-left me-2"></i>Ver todos los productos
+                        </a>
+                    </div>
+                </div>
             </div>
         <?php endif; ?>
+        
+        <!-- Mensaje para cuando no hay productos visibles después del filtrado -->
+        <div class="col-12 text-center py-5 d-none" id="no-products-message">
+            <div class="card border-0">
+                <div class="card-body py-5">
+                    <i class="fas fa-search fa-4x text-muted mb-4"></i>
+                    <h4 class="text-muted mb-3">No hay sistemas en esta categoría</h4>
+                    <p class="text-muted mb-4">No se encontraron productos para la categoría seleccionada.</p>
+                    <button class="btn btn-danger" onclick="showAllProducts()">
+                        <i class="fas fa-th me-2"></i>Mostrar todos
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -443,9 +466,11 @@
             const category = this.getAttribute('data-category');
 
             // Filter products without delay to prevent layout jumps
+            let visibleCount = 0;
             productItems.forEach(item => {
                 if (category === 'all' || item.getAttribute('data-category') === category) {
                     item.style.display = 'block';
+                    visibleCount++;
                     setTimeout(() => {
                         item.style.opacity = '1';
                     }, 10);
@@ -454,7 +479,30 @@
                     item.style.opacity = '0';
                 }
             });
+            
+            // Mostrar mensaje si no hay productos visibles
+            const noProductsMessage = document.getElementById('no-products-message');
+            if (visibleCount === 0 && category !== 'all') {
+                noProductsMessage.classList.remove('d-none');
+            } else {
+                noProductsMessage.classList.add('d-none');
+            }
         });
     });
+    
+    function showAllProducts() {
+        // Activar botón "Todos"
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('[data-category="all"]').classList.add('active');
+        
+        // Mostrar todos los productos
+        productItems.forEach(item => {
+            item.style.display = 'block';
+            item.style.opacity = '1';
+        });
+        
+        // Ocultar mensaje
+        document.getElementById('no-products-message').classList.add('d-none');
+    }
 </script>
 <?= $this->include('layouts/footer') ?>

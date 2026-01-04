@@ -25,7 +25,10 @@ class CompraController extends BaseController
         
         $data = [
             'producto' => $producto,
-            'title' => 'Comprar - ' . $producto['nombre']
+            'title' => 'Comprar - ' . $producto['nombre'],
+            'isLoggedIn' => session()->get('logged_in') ?? false,
+            'userName' => session()->get('name') ?? '',
+            'panelUrl' => session()->get('rol') === 'administrador' ? 'admin/dashboard' : 'cliente/dashboard'
         ];
         
         return view('compra/index', $data);
