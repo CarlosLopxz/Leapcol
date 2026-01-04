@@ -23,6 +23,7 @@ class CreateSuscripcionesTable extends Migration
             'producto_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
+                'unsigned' => true,
             ],
             'fecha_compra' => [
                 'type' => 'DATETIME',

@@ -10,6 +10,13 @@ class AdminController extends BaseController
             return redirect()->to('/login');
         }
 
+        // Debug temporal - eliminar después
+        $userModel = new \App\Models\UserModel();
+        $user = $userModel->find(session('user_id'));
+        if ($user && !session('name')) {
+            session()->set('name', $user['name']);
+        }
+
         return view('admin/dashboard');
     }
 }

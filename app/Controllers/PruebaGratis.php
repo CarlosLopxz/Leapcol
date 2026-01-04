@@ -43,16 +43,31 @@ class PruebaGratis extends BaseController
             return redirect()->to('/login');
         }
         
+        $productoModel = new \App\Models\ProductoModel();
         $pruebaModel = new \App\Models\PruebaGratisModel();
         $userId = session()->get('user_id');
         
-        if ($pruebaModel->crearPrueba($userId, $productoId)) {
-            session()->setFlashdata('swal_success', 'Prueba gratis activada por 14 días');
-        } else {
-            session()->setFlashdata('swal_error', 'Error al activar la prueba');
+        $producto = $productoModel->find($productoId);
+        
+        if (!$producto) {
+            return redirect()->to('/productos');
         }
         
-        return redirect()->to('/prueba-gratis/' . $productoId);
+        // Verificar si ya tiene una prueba activa
+        $pruebaActiva = $pruebaModel->getPruebaActiva($userId, $productoId);
+        
+        if (!$pruebaActiva) {
+            // Crear nueva prueba gratis
+            $pruebaModel->crearPrueba($userId, $productoId);
+        }
+        
+        // Mostrar loader por 20 segundos
+        $data = [
+            'title' => 'Activando Sistema - Leapcol',
+            'producto' => $producto
+        ];
+        
+        return view('prueba_gratis/loader', $data);
     }
     
     public function cancelar($productoId)

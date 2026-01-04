@@ -1,0 +1,1108 @@
+ERROR - 2026-01-03 14:25:44 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 14:25:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: YES)
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 21:59:24 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 21:59:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: YES)
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 21:59:26 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 21:59:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: YES)
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 21:59:27 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 21:59:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: YES)
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:00:27 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:00:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: YES)
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:00:30 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: YES) in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:00:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: YES)
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:01:37 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:01:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'leapcol'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:01:38 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:01:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'leapcol'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:01:38 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:01:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'leapcol'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:01:38 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:01:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'leapcol'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:02:17 --> mysqli_sql_exception: Table 'leapcol.productos' doesn't exist in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2026-01-03 22:02:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 4 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 5 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 6 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 7 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:17 --> [Caused by] mysqli_sql_exception: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 7 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 8 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:02:28 --> mysqli_sql_exception: Table 'leapcol.productos' doesn't exist in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2026-01-03 22:02:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 4 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 5 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 6 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 7 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:28 --> [Caused by] mysqli_sql_exception: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 7 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 8 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:02:33 --> mysqli_sql_exception: Failed to open the referenced table 'productos' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `s...', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `s...')
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `s...')
+#3 C:\laragon\www\Leapcol\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `s...')
+#4 C:\laragon\www\Leapcol\app\Database\Migrations\2025-11-23-000001_CreateSuscripcionesTable.php(51): CodeIgniter\Database\Forge->createTable('suscripciones')
+#5 C:\laragon\www\Leapcol\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateSuscripcionesTable->up()
+#6 C:\laragon\www\Leapcol\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\laragon\www\Leapcol\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\laragon\www\Leapcol\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\laragon\www\Leapcol\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\laragon\www\Leapcol\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\laragon\www\Leapcol\spark.php(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2026-01-03 22:02:34 --> mysqli_sql_exception: Table 'leapcol.productos' doesn't exist in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2026-01-03 22:02:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 4 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 5 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 6 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 7 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:34 --> [Caused by] mysqli_sql_exception: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 7 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 8 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:02:35 --> mysqli_sql_exception: Table 'leapcol.productos' doesn't exist in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+CRITICAL - 2026-01-03 22:02:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 4 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 5 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 6 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 7 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+CRITICAL - 2026-01-03 22:02:35 --> [Caused by] mysqli_sql_exception: Table 'leapcol.productos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `productos`
+WHERE `estado` = \'activo\'
+ORDER BY `id` DESC
+ LIMIT 6')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 7 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 8 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:03:02 --> mysqli_sql_exception: Referencing column 'producto_id' and referenced column 'id' in foreign key constraint 'suscripciones_producto_id_foreign' are incompatible. in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `s...', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `s...')
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `s...')
+#3 C:\laragon\www\Leapcol\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `s...')
+#4 C:\laragon\www\Leapcol\app\Database\Migrations\2025-11-23-000001_CreateSuscripcionesTable.php(51): CodeIgniter\Database\Forge->createTable('suscripciones')
+#5 C:\laragon\www\Leapcol\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateSuscripcionesTable->up()
+#6 C:\laragon\www\Leapcol\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\laragon\www\Leapcol\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\laragon\www\Leapcol\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\laragon\www\Leapcol\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\laragon\www\Leapcol\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\laragon\www\Leapcol\spark.php(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2026-01-03 22:05:45 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:05:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'leapcol'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')
+ERROR - 2026-01-03 22:05:46 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#6 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#7 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'leapcol' in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+#5 C:\laragon\www\Leapcol\app\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+#6 C:\laragon\www\Leapcol\app\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-03 22:05:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'leapcol'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `productos`
+WHERE `estado` = :estado:
+ORDER BY `id` DESC
+ LIMIT 6', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(6, 0)
+ 5 APPPATH\Models\ProductoModel.php(64): CodeIgniter\BaseModel->findAll(6)
+ 6 APPPATH\Controllers\Home.php(14): App\Models\ProductoModel->getRecentProducts(6)
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')

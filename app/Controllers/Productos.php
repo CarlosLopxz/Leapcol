@@ -18,10 +18,29 @@ class Productos extends BaseController
 
     public function index()
     {
+        $userId = session()->get('user_id');
+        $pruebaModel = new \App\Models\PruebaGratisModel();
+        $sistemaModel = new \App\Models\SistemaModel();
+        $pruebasActivas = [];
+        $sistemas = [];
+        
+        if ($userId) {
+            // Obtener todas las pruebas activas del usuario
+            $pruebasActivas = $pruebaModel->where('user_id', $userId)
+                                        ->where('estado', 'activa')
+                                        ->where('fecha_expiracion >', date('Y-m-d H:i:s'))
+                                        ->findAll();
+        }
+        
+        // Obtener todos los sistemas activos
+        $sistemas = $sistemaModel->where('activo', 1)->findAll();
+        
         $data = [
             'title' => 'Productos - Leapcol',
             'productos' => $this->productoModel->getProductosConCategoria(),
-            'categorias' => $this->categoriaModel->getCategoriasActivas()
+            'categorias' => $this->categoriaModel->getCategoriasActivas(),
+            'pruebas_activas' => $pruebasActivas,
+            'sistemas' => $sistemas
         ];
 
         return $this->renderView('productos/index', $data);

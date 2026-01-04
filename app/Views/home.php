@@ -12,7 +12,7 @@
               <h1 class="mb-6 font-heading fs-5" style="letter-spacing: -1px;">
                 La tecnología que hace crecer tu negocio.
               </h1>
-              <p class="mb-8 fs-10 fw-medium text-secondary">
+              <p class="mb-8 fs-10 fw-medium text-secondary mw-md">
                 Somos una empresa dedicada al desarrollo de software y microservicios. creamos herramientas
                 digitales que hacen más fácil tu trabajo diario: controla tus ventas, clientes e inventarios sin
                 complicaciones.
@@ -198,6 +198,28 @@
 
   .system-card:hover img {
     transform: scale(1.03);
+  }
+  
+  /* Responsive text width */
+  @media (max-width: 768px) {
+    .mw-md {
+      max-width: 90% !important;
+    }
+    
+    .fs-10 {
+      font-size: 0.9rem !important;
+      line-height: 1.5 !important;
+    }
+    
+    .mb-8 {
+      margin-bottom: 1.5rem !important;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .mw-md {
+      max-width: 95% !important;
+    }
   }
 </style>
 

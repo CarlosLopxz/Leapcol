@@ -367,19 +367,53 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
-                                        class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-rocket me-2"></i> Prueba Gratis
-                                    </a>
-                                    <div class="btn-group-actions">
-                                        <button class="btn-minimal btn-details">
-                                            <i class="fas fa-shopping-cart me-2"></i> Comprar
-                                        </button>
-                                        <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
-                                            class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
-                                            <i class="fas fa-info-circle me-2"></i> Detalles
+                                    <?php 
+                                    $tienePruebaActiva = false;
+                                    $sistemaProducto = null;
+                                    
+                                    // Verificar si tiene prueba activa
+                                    if (!empty($pruebas_activas)) {
+                                        foreach ($pruebas_activas as $prueba) {
+                                            if ($prueba['producto_id'] == $producto['id']) {
+                                                $tienePruebaActiva = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Obtener información del sistema
+                                    if (!empty($sistemas)) {
+                                        foreach ($sistemas as $sistema) {
+                                            if ($sistema['producto_id'] == $producto['id']) {
+                                                $sistemaProducto = $sistema;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    
+                                    <?php if ($tienePruebaActiva && $sistemaProducto): ?>
+                                        <!-- Botón Entrar para productos con prueba activa -->
+                                        <a href="<?= base_url($sistemaProducto['ruta_login']) ?>"
+                                            class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-sign-in-alt me-2"></i> Entrar al Sistema
                                         </a>
-                                    </div>
+                                    <?php else: ?>
+                                        <!-- Botones normales para productos sin prueba activa -->
+                                        <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
+                                            class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-rocket me-2"></i> Prueba Gratis
+                                        </a>
+                                        <div class="btn-group-actions">
+                                            <a href="<?= base_url('compra/' . $producto['id']) ?>" class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                                <i class="fas fa-shopping-cart me-2"></i> Comprar
+                                            </a>
+                                            <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
+                                                class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                                <i class="fas fa-info-circle me-2"></i> Detalles
+                                            </a>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

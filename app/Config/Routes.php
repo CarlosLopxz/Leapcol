@@ -32,6 +32,22 @@ $routes->post('/register', 'AuthController::store');
 $routes->get('/auth/google', 'AuthController::googleLogin');
 $routes->get('/auth/google/callback', 'AuthController::googleCallback');
 
+// Rutas de sistemas
+$routes->get('/sistema/login', 'SistemaController::login');
+$routes->get('/sistema/cambiar-password', 'SistemaController::cambiarPassword');
+$routes->get('/sistema/dashboard', 'SistemaController::dashboard');
+$routes->get('/sistema/(:num)', 'SistemaController::index/$1');
+
+// Rutas del Sistema de Inventario
+$routes->get('/inventario/login', 'Sistemas\InventarioController::login');
+$routes->post('/inventario/authenticate', 'Sistemas\InventarioController::authenticate');
+$routes->get('/inventario/dashboard', 'Sistemas\InventarioController::dashboard', ['filter' => 'inventario']);
+$routes->get('/inventario/logout', 'Sistemas\InventarioController::logout');
+
+// Rutas de compra
+$routes->get('/compra/(:num)', 'CompraController::index/$1');
+$routes->post('/compra/procesar', 'CompraController::procesar');
+
 // Rutas de dashboards
 $routes->get('/cliente/dashboard', 'ClienteController::dashboard', ['filter' => 'auth']);
 $routes->get('/admin/dashboard', 'AdminController::dashboard', ['filter' => 'admin']);

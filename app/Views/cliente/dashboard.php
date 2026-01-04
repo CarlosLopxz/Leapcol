@@ -28,7 +28,7 @@
                 <div class="row">
                   <div class="col-12">
                     <div class="row flex-grow">
-                      <?php if (empty($suscripciones)): ?>
+                      <?php if (empty($suscripciones) && empty($pruebas_activas)): ?>
                         <div class="col-12 grid-margin stretch-card">
                           <div class="card card-rounded">
                             <div class="card-body">
@@ -41,6 +41,47 @@
                           </div>
                         </div>
                       <?php else: ?>
+                        <!-- Mostrar pruebas gratis activas -->
+                        <?php if (!empty($pruebas_activas)): ?>
+                          <?php foreach ($pruebas_activas as $prueba): ?>
+                            <div class="col-md-4 grid-margin stretch-card">
+                              <div class="card card-rounded">
+                                <div class="card-body">
+                                  <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                      <h4 class="card-title card-title-dash mb-1"><?= $prueba['nombre_producto'] ?></h4>
+                                      <p class="text-small text-muted mb-0">Prueba Gratis</p>
+                                    </div>
+                                    <span class="badge badge-opacity-warning">Prueba</span>
+                                  </div>
+
+                                  <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div>
+                                      <p class="text-small text-muted mb-1">Fecha de Inicio</p>
+                                      <h6 class="mb-0 fw-bold"><?= date('d M, Y', strtotime($prueba['fecha_inicio'])) ?></h6>
+                                    </div>
+                                    <div class="text-end">
+                                      <p class="text-small text-muted mb-1">Expira el</p>
+                                      <h6 class="mb-0 fw-bold text-warning">
+                                        <?= date('d M, Y', strtotime($prueba['fecha_expiracion'])) ?></h6>
+                                    </div>
+                                  </div>
+
+                                  <?php if (!empty($prueba['imagen_principal'])): ?>
+                                    <div class="mt-3">
+                                      <img
+                                        src="<?= base_url('public/assets/img/productos/' . $prueba['imagen_principal']) ?>"
+                                        alt="<?= $prueba['nombre_producto'] ?>" class="img-fluid rounded"
+                                        style="width: 100%; height: 150px; object-fit: cover;">
+                                    </div>
+                                  <?php endif; ?>
+                                </div>
+                              </div>
+                            </div>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                        
+                        <!-- Mostrar suscripciones -->
                         <?php foreach ($suscripciones as $suscripcion): ?>
                           <div class="col-md-4 grid-margin stretch-card">
                             <div class="card card-rounded">

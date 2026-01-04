@@ -24,10 +24,11 @@
                                     <div class="carousel-inner">
                                         <?php foreach ($imagenes as $index => $img): ?>
                                             <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                                                <img src="<?= base_url('assets/img/productos/' . $img) ?>"
-                                                    class="d-block w-100 rounded shadow-sm"
-                                                    alt="<?= esc($producto['nombre']) ?>"
-                                                    style="max-height: 400px; object-fit: contain;">
+                                                <div class="carousel-image-container">
+                                                    <img src="<?= base_url('assets/img/productos/' . $img) ?>"
+                                                        class="carousel-image"
+                                                        alt="<?= esc($producto['nombre']) ?>">
+                                                </div>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
@@ -76,35 +77,64 @@
                                             class="fs-5 fw-bold text-dark">$<?= number_format($producto['precio'], 0, ',', '.') ?></span>
                                     <?php endif; ?>
                                 </div>
-                                <p class="fs-9 text-secondary lh-lg mb-8">
+                                <p class="fs-10 text-secondary mb-8" style="line-height: 1.4; letter-spacing: normal;">
                                     <?= nl2br(esc($producto['descripcion'])) ?>
                                 </p>
                             </div>
 
-                            <div class="d-grid gap-3">
-                                <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
-                                    class="btn btn-danger btn-lg fs-9 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
-                                    <i class="fas fa-rocket"></i>
-                                    Prueba Gratis por 14 días
-                                </a>
-                                <button class="btn btn-outline-danger btn-lg fs-9 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    Comprar Ahora
-                                </button>
-                                <a href="https://wa.me/573001234567?text=Hola,%20estoy%20interesado%20en%20<?= urlencode($producto['nombre']) ?>"
-                                    target="_blank"
-                                    class="btn btn-outline-secondary btn-lg fs-9 py-3 fw-medium d-flex align-items-center justify-content-center gap-2">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2">
-                                        <path
-                                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                                    </svg>
-                                    Consultar por WhatsApp
-                                </a>
-                                <a href="<?= base_url('productos') ?>"
-                                    class="btn btn-outline-light text-secondary fs-9 py-3 fw-medium">
-                                    Ver más productos
-                                </a>
+                            <div class="action-buttons-container">
+                                <!-- Botón principal - Prueba Gratis -->
+                                <div class="mb-4">
+                                    <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
+                                        class="btn btn-danger btn-lg w-100 py-3 fw-medium d-flex align-items-center justify-content-center gap-2">
+                                        <i class="fas fa-rocket"></i>
+                                        <span>Prueba Gratis por 14 días</span>
+                                    </a>
+                                    <small class="text-muted d-block text-center mt-2">Sin compromiso • Cancela cuando quieras</small>
+                                </div>
+
+                                <!-- Botones secundarios -->
+                                <div class="row g-2 mb-4">
+                                    <div class="col-6">
+                                        <a href="<?= base_url('compra/' . $producto['id']) ?>" class="btn btn-dark btn-lg w-100 py-3 fw-medium d-flex align-items-center justify-content-center gap-2">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span class="d-none d-sm-inline">Comprar</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="https://wa.me/573001234567?text=Hola,%20estoy%20interesado%20en%20<?= urlencode($producto['nombre']) ?>"
+                                            target="_blank"
+                                            class="btn btn-dark btn-lg w-100 py-3 fw-medium d-flex align-items-center justify-content-center gap-2">
+                                            <i class="fab fa-whatsapp"></i>
+                                            <span class="d-none d-sm-inline">WhatsApp</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Información adicional -->
+                                <div class="features-list mb-4">
+                                    <div class="d-flex align-items-center gap-2 mb-2 text-secondary">
+                                        <i class="fas fa-check"></i>
+                                        <small>Soporte técnico incluido</small>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2 text-secondary">
+                                        <i class="fas fa-check"></i>
+                                        <small>Actualizaciones automáticas</small>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2 text-secondary">
+                                        <i class="fas fa-check"></i>
+                                        <small>Garantía de satisfacción</small>
+                                    </div>
+                                </div>
+
+                                <!-- Botón de navegación -->
+                                <div class="text-center">
+                                    <a href="<?= base_url('productos') ?>"
+                                        class="btn btn-link text-secondary text-decoration-none">
+                                        <i class="fas fa-arrow-left me-1"></i>
+                                        Ver más productos
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -203,6 +233,70 @@
 <style>
     #static-related-products::-webkit-scrollbar {
         display: none;
+    }
+    
+    /* Carousel con altura fija */
+    .carousel-image-container {
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .carousel-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+    
+    /* Estilos minimalistas para botones rojos */
+    .action-buttons-container .btn {
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-width: 1px;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+    
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+    
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: white;
+    }
+    
+    .features-list {
+        background: transparent;
+        border: 1px solid #e9ecef;
+        border-radius: 6px;
+        padding: 1rem;
+    }
+    
+    .features-list small {
+        font-weight: 400;
+    }
+    
+    @media (max-width: 576px) {
+        .action-buttons-container .btn-lg {
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .carousel-image-container {
+            height: 250px;
+        }
     }
 </style>
 

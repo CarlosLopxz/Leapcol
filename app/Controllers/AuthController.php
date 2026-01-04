@@ -29,12 +29,20 @@ class AuthController extends BaseController
         if ($user && $userModel->verifyPassword($password, $user['password'])) {
             session()->set([
                 'user_id' => $user['id'],
+                'name' => $user['name'],
                 'email' => $user['email'],
                 'rol' => $user['rol'],
                 'logged_in' => true
             ]);
 
             session()->setFlashdata('swal_success', 'Conectado, redirigiendo...');
+
+            // Verificar si hay una URL de redirección guardada
+            $redirectUrl = session()->get('redirect_after_login');
+            if ($redirectUrl) {
+                session()->remove('redirect_after_login');
+                return redirect()->to($redirectUrl);
+            }
 
             if ($user['rol'] === 'administrador') {
                 return redirect()->to('/admin/dashboard');
@@ -141,6 +149,7 @@ class AuthController extends BaseController
                 // Usuario existe, iniciar sesión
                 session()->set([
                     'user_id' => $existingUser['id'],
+                    'name' => $existingUser['name'],
                     'email' => $existingUser['email'],
                     'rol' => $existingUser['rol'],
                     'logged_in' => true
@@ -166,6 +175,7 @@ class AuthController extends BaseController
                 if ($userId) {
                     session()->set([
                         'user_id' => $userId,
+                        'name' => $userInfo->name ?? $userInfo->email,
                         'email' => $userInfo->email,
                         'rol' => 'cliente',
                         'logged_in' => true
