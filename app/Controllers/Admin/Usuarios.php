@@ -36,6 +36,7 @@ class Usuarios extends BaseController
     public function guardar()
     {
         $rules = [
+            'name' => 'required|min_length[3]',
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required|min_length[6]',
             'rol' => 'required|in_list[administrador,cliente]',
@@ -47,6 +48,7 @@ class Usuarios extends BaseController
         }
 
         $data = [
+            'name' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
             'password' => $this->request->getPost('password'),
             'rol' => $this->request->getPost('rol'),
@@ -83,6 +85,7 @@ class Usuarios extends BaseController
         }
 
         $rules = [
+            'name' => 'required|min_length[3]',
             'email' => "required|valid_email|is_unique[users.email,id,{$id}]",
             'rol' => 'required|in_list[administrador,cliente]',
             'estado' => 'required|in_list[activo,inactivo]'
@@ -98,6 +101,7 @@ class Usuarios extends BaseController
         }
 
         $data = [
+            'name' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
             'rol' => $this->request->getPost('rol'),
             'estado' => $this->request->getPost('estado')

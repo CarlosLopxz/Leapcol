@@ -131,7 +131,23 @@ class Productos extends BaseController
         }
         $data['imagenes_adicionales'] = json_encode($additionalImages);
 
-        $this->productoModel->insert($data);
+        $productoId = $this->productoModel->insert($data);
+        
+        // Crear sistema si se proporcionó información
+        $sistemaData = $this->request->getPost('sistema');
+        if ($sistemaData && !empty($sistemaData['codigo_sistema'])) {
+            $sistemaModel = new \App\Models\SistemaModel();
+            $sistemaModel->insert([
+                'producto_id' => $productoId,
+                'nombre_sistema' => $sistemaData['nombre_sistema'],
+                'codigo_sistema' => $sistemaData['codigo_sistema'],
+                'ruta_login' => $sistemaData['ruta_login'],
+                'ruta_dashboard' => $sistemaData['ruta_dashboard'],
+                'controlador' => $sistemaData['controlador'],
+                'activo' => 1
+            ]);
+        }
+        
         return redirect()->to(base_url('admin/productos'))->with('success', 'Producto creado correctamente');
     }
 

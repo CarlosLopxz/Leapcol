@@ -108,6 +108,48 @@
                                                         </label>
                                                     </div>
                                                     
+                                                    <!-- Configuración del Sistema -->
+                                                    <div class="card mt-4">
+                                                        <div class="card-header">
+                                                            <h5 class="mb-0">Configuración del Sistema (Opcional)</h5>
+                                                            <small class="text-muted">Si este producto tiene un sistema asociado, completa los siguientes campos</small>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="nombre_sistema">Nombre del Sistema</label>
+                                                                        <input type="text" class="form-control" id="nombre_sistema" name="sistema[nombre_sistema]" placeholder="Ej: Sistema de Inventario">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="codigo_sistema">Código del Sistema</label>
+                                                                        <input type="text" class="form-control" id="codigo_sistema" name="sistema[codigo_sistema]" placeholder="Ej: inventario">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="ruta_login">Ruta de Login</label>
+                                                                        <input type="text" class="form-control" id="ruta_login" name="sistema[ruta_login]" placeholder="Ej: inventario/login">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="ruta_dashboard">Ruta del Dashboard</label>
+                                                                        <input type="text" class="form-control" id="ruta_dashboard" name="sistema[ruta_dashboard]" placeholder="Ej: inventario/dashboard">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="controlador">Controlador</label>
+                                                                <input type="text" class="form-control" id="controlador" name="sistema[controlador]" placeholder="Ej: Sistemas\\InventarioController">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
                                                     <div class="mt-4">
                                                         <button type="submit" class="btn btn-primary me-2">
                                                             <i class="mdi mdi-content-save"></i> Crear Producto
