@@ -15,8 +15,8 @@ class GoogleOAuth extends BaseConfig
     {
         parent::__construct();
         
-        $this->clientId = env('GOOGLE_CLIENT_ID', 'TU_GOOGLE_CLIENT_ID');
-        $this->clientSecret = env('GOOGLE_CLIENT_SECRET', 'TU_GOOGLE_CLIENT_SECRET');
+        $this->clientId = env('GOOGLE_CLIENT_ID', '');
+        $this->clientSecret = env('GOOGLE_CLIENT_SECRET', '');
         $this->redirectUri = base_url('/auth/google/callback');
     }
 }

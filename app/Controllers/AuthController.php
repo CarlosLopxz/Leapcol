@@ -102,6 +102,12 @@ class AuthController extends BaseController
     public function googleLogin()
     {
         $config = new GoogleOAuth();
+        
+        // Verificar si las credenciales están configuradas
+        if (empty($config->clientId) || empty($config->clientSecret)) {
+            return redirect()->to('/login')->with('swal_error', 'Google OAuth no está configurado correctamente');
+        }
+        
         $client = new GoogleClient();
         
         $client->setClientId($config->clientId);
