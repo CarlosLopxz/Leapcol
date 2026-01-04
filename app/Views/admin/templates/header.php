@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin2 </title>
+    <title>Leapcol</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href=" <?= media_url();?>dashboard/vendors/feather/feather.css">
     <link rel="stylesheet" href=" <?= media_url();?>dashboard/vendors/mdi/css/materialdesignicons.min.css">
@@ -18,11 +18,8 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="<?= media_url();?>dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="<?= media_url();?>dashboard/js/select.dataTables.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="<?= media_url();?>dashboard/css/style.css">
-    <!-- endinject -->
-    <link rel="shortcut icon" href="<?= media_url();?>dashboard/images/favicon.png" />
+    <link rel="shortcut icon" href="<?= media_url();?>img/icono.png" />
   </head>
   <body class="with-welcome-text">
     <div class="container-scroller">

@@ -75,6 +75,12 @@
                                         style="width: 100%; height: 150px; object-fit: cover;">
                                     </div>
                                   <?php endif; ?>
+                                  
+                                  <div class="mt-3 text-center">
+                                    <button onclick="abrirSistema()" class="btn btn-sm px-4 py-2" style="background: #dc3545; color: white; border: none; border-radius: 6px; font-weight: 500; text-decoration: none; transition: all 0.2s ease;" onmouseover="this.style.background='#c82333'" onmouseout="this.style.background='#dc3545'">
+                                      Abrir Sistema
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -147,3 +153,23 @@
 
 
 <?= $this->include('cliente/templates/footer') ?>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function abrirSistema() {
+    Swal.fire({
+        title: 'Redirigiendo al sistema...',
+        text: 'Por favor espera un momento',
+        icon: 'info',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    }).then(() => {
+        window.location.href = '<?= base_url('inventario/dashboard') ?>';
+    });
+}
+</script>

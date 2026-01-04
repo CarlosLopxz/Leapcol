@@ -19,6 +19,8 @@
                   <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/productos') ?>">Productos</a></li>
                   <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/categorias') ?>">Categoria</a></li>
                   <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/usuarios') ?>">Usuarios</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/pruebas-gratis') ?>">Pruebas Gratis</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/ventas') ?>">Ventas</a></li>
                 </ul>
               </div>
             </li>

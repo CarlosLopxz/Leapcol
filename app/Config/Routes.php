@@ -74,4 +74,11 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'ad
     $routes->get('usuarios/editar/(:num)', 'Usuarios::editar/$1');
     $routes->post('usuarios/actualizar/(:num)', 'Usuarios::actualizar/$1');
     $routes->get('usuarios/eliminar/(:num)', 'Usuarios::eliminar/$1');
+    
+    // Rutas de Pruebas Gratis
+    $routes->get('pruebas-gratis', 'PruebasGratis::index');
+    $routes->get('pruebas-gratis/cancelar/(:num)', 'PruebasGratis::cancelar/$1');
+    
+    // Rutas de Ventas
+    $routes->get('ventas', 'Ventas::index');
 });

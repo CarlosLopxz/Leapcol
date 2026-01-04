@@ -1,0 +1,75 @@
+ERROR - 2026-01-04 01:43:19 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for localhostq failed: Host desconocido.  in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 201)
+#1 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhostq', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\Leapcol\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\Leapcol\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#7 C:\laragon\www\Leapcol\app\Controllers\BaseController.php(74): CodeIgniter\BaseModel->find('1')
+#8 C:\laragon\www\Leapcol\app\Controllers\BaseController.php(59): App\Controllers\BaseController->setSessionData()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(904): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+#11 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#16 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for localhostq failed: Host desconocido.  in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhostq', 'root', Object(SensitiveParameterValue), 'leapcol', 3306, '', 0)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\Leapcol\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\Leapcol\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#6 C:\laragon\www\Leapcol\app\Controllers\BaseController.php(74): CodeIgniter\BaseModel->find('1')
+#7 C:\laragon\www\Leapcol\app\Controllers\BaseController.php(59): App\Controllers\BaseController->setSessionData()
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(904): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+#10 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for localhostq failed: Host desconocido.  in C:\laragon\www\Leapcol\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\Leapcol\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\Leapcol\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\Leapcol\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\Leapcol\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+#5 C:\laragon\www\Leapcol\app\Controllers\BaseController.php(74): CodeIgniter\BaseModel->find('1')
+#6 C:\laragon\www\Leapcol\app\Controllers\BaseController.php(59): App\Controllers\BaseController->setSessionData()
+#7 C:\laragon\www\Leapcol\system\CodeIgniter.php(904): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#8 C:\laragon\www\Leapcol\system\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+#9 C:\laragon\www\Leapcol\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\Leapcol\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\Leapcol\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\laragon\www\Leapcol\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\laragon\www\Leapcol\index.php(2): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2026-01-04 01:43:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for localhostq failed: Host desconocido. 
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `users`.`id` = :users.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(611): CodeIgniter\Model->doFind(true, '1')
+ 5 APPPATH\Controllers\BaseController.php(74): CodeIgniter\BaseModel->find('1')
+ 6 APPPATH\Controllers\BaseController.php(59): App\Controllers\BaseController->setSessionData()
+ 7 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 8 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 ROOTPATH\index.php(2): require_once('C:\\laragon\\www\\Leapcol\\public\\index.php')

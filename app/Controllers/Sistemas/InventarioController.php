@@ -8,7 +8,18 @@ class InventarioController extends BaseController
 {
     public function login()
     {
-        return view('sistemas/Inventario/Login/index');
+        // Si no hay sesión del sistema principal, mostrar error 404
+        if (!session()->get('logged_in')) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Página no encontrada');
+        }
+        
+        // Si ya hay sesión del sistema principal, redirigir directamente al dashboard
+        session()->set([
+            'inventario_logged_in' => true,
+            'inventario_user' => session()->get('name') ?? session()->get('email') ?? 'Usuario',
+            'inventario_username' => session()->get('email')
+        ]);
+        return redirect()->to('/inventario/dashboard');
     }
     
     public function authenticate()
@@ -34,8 +45,18 @@ class InventarioController extends BaseController
     
     public function dashboard()
     {
+        // Verificar si hay sesión del inventario o del sistema principal
         if (!session()->get('inventario_logged_in')) {
-            return redirect()->to('/inventario/login');
+            if (session()->get('logged_in')) {
+                // Auto-login si hay sesión del sistema principal
+                session()->set([
+                    'inventario_logged_in' => true,
+                    'inventario_user' => session()->get('name') ?? session()->get('email') ?? 'Usuario',
+                    'inventario_username' => session()->get('email')
+                ]);
+            } else {
+                return redirect()->to('/inventario/login');
+            }
         }
         
         // Obtener información de la prueba gratis del usuario principal

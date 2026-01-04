@@ -45,6 +45,15 @@ class SuscripcionModel extends Model
     protected $beforeInsert = ['checkUserRole'];
     protected $beforeUpdate = ['checkUserRole'];
 
+    public function getSuscripcionesConDetalles()
+    {
+        return $this->select('suscripciones.*, productos.nombre as producto_nombre, productos.precio, users.name as usuario_nombre, users.email as usuario_email')
+            ->join('productos', 'productos.id = suscripciones.producto_id')
+            ->join('users', 'users.id = suscripciones.user_id')
+            ->orderBy('suscripciones.created_at', 'DESC')
+            ->findAll();
+    }
+
     public function getSuscripcionesPorUsuario($userId)
     {
         return $this->select('suscripciones.*, productos.nombre as nombre_producto, productos.imagen_principal')
