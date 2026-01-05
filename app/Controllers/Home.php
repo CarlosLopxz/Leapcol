@@ -10,7 +10,7 @@ class Home extends BaseController
         $productoModel = new \App\Models\ProductoModel();
         
         $data = [
-            'title' => 'Inicio - Leapcol',
+            'title' => 'Leapcol - Inicio',
             'productos' => $productoModel->getRecentProducts(6)
         ];
         

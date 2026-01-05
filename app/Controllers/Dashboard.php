@@ -6,7 +6,7 @@ class Dashboard extends BaseController
 {
     public function index(): string
     {
-        $title = 'Inicio - Leapcol';
+        $title = 'Leapcol - Inicio';
         return view('dashboard', compact('title'));
     }
 }

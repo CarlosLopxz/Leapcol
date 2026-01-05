@@ -330,96 +330,250 @@
 
     <div class="row g-4 mb-5" id="productos-container" style="min-height: 500px;">
         <?php if (!empty($productos)): ?>
-            <?php foreach ($productos as $producto): ?>
-                <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <?php if (!empty($producto['imagen_principal'])): ?>
-                                <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
-                                    alt="<?= $producto['nombre'] ?>" style="width: 100%; height: 100%; object-fit: cover;">
-                            <?php else: ?>
-                                <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
-                            <?php endif; ?>
-                            <?php if ($producto['mas_vendido']): ?>
-                                <span class="product-badge">Más Vendido</span>
-                            <?php endif; ?>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
-                            <h3 class="product-name"><?= $producto['nombre'] ?></h3>
-                            <p class="product-description">
-                                <?= $producto['descripcion'] ?>
-                            </p>
-                            <div class="product-features">
-                                <span class="feature-tag"><i class="fas fa-box"></i> Stock: <?= $producto['stock'] ?></span>
-                                <?php if ($producto['precio_oferta']): ?>
-                                    <span class="feature-tag"><i class="fas fa-tag"></i> Oferta</span>
+            <?php 
+            // Separar productos por tipo
+            $productosAlquiler = [];
+            $productosVenta = [];
+            $productosAMedida = [];
+            
+            foreach ($productos as $producto) {
+                switch ($producto['tipo_producto'] ?? 'alquiler') {
+                    case 'venta':
+                        $productosVenta[] = $producto;
+                        break;
+                    case 'a_medida':
+                        $productosAMedida[] = $producto;
+                        break;
+                    default:
+                        $productosAlquiler[] = $producto;
+                        break;
+                }
+            }
+            ?>
+            
+            <!-- Sección de Software de Alquiler -->
+            <?php if (!empty($productosAlquiler)): ?>
+                <div class="col-12">
+                    <div class="mb-4">
+                        <h2 class="h3 text-danger fw-bold mb-2">
+                            <i class="fas fa-calendar-alt me-2"></i>Software de Alquiler
+                        </h2>
+                        <p class="text-muted">Soluciones flexibles con suscripción mensual</p>
+                    </div>
+                </div>
+                
+                <?php foreach ($productosAlquiler as $producto): ?>
+                    <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <?php if (!empty($producto['imagen_principal'])): ?>
+                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
+                                        alt="<?= $producto['nombre'] ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                                <?php else: ?>
+                                    <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
+                                <?php endif; ?>
+                                <?php if ($producto['mas_vendido']): ?>
+                                    <span class="product-badge">Más Vendido</span>
                                 <?php endif; ?>
                             </div>
-                            <div class="product-footer">
-                                <div class="product-price">
+                            <div class="product-info">
+                                <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
+                                <h3 class="product-name"><?= $producto['nombre'] ?></h3>
+                                <p class="product-description">
+                                    <?= $producto['descripcion'] ?>
+                                </p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-calendar"></i> Alquiler</span>
                                     <?php if ($producto['precio_oferta']): ?>
-                                        <span
-                                            style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 0, ',', '.') ?></span>
-                                        $<?= number_format($producto['precio_oferta'], 0, ',', '.') ?><span class="price-period">/mes</span>
-                                    <?php else: ?>
-                                        $<?= number_format($producto['precio'], 0, ',', '.') ?><span class="price-period">/mes</span>
+                                        <span class="feature-tag"><i class="fas fa-tag"></i> Oferta</span>
                                     <?php endif; ?>
                                 </div>
-                                <div class="d-grid gap-2">
-                                    <?php 
-                                    $tienePruebaActiva = false;
-                                    $sistemaProducto = null;
-                                    
-                                    // Verificar si tiene prueba activa
-                                    if (!empty($pruebas_activas)) {
-                                        foreach ($pruebas_activas as $prueba) {
-                                            if ($prueba['producto_id'] == $producto['id']) {
-                                                $tienePruebaActiva = true;
-                                                break;
+                                <div class="product-footer">
+                                    <div class="product-price">
+                                        <?php if ($producto['precio_oferta']): ?>
+                                            <span
+                                                style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 0, ',', '.') ?></span>
+                                            $<?= number_format($producto['precio_oferta'], 0, ',', '.') ?><span class="price-period">/mes</span>
+                                        <?php else: ?>
+                                            $<?= number_format($producto['precio'], 0, ',', '.') ?><span class="price-period">/mes</span>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <?php 
+                                        $tienePruebaActiva = false;
+                                        $sistemaProducto = null;
+                                        
+                                        // Verificar si tiene prueba activa
+                                        if (!empty($pruebas_activas)) {
+                                            foreach ($pruebas_activas as $prueba) {
+                                                if ($prueba['producto_id'] == $producto['id']) {
+                                                    $tienePruebaActiva = true;
+                                                    break;
+                                                }
                                             }
                                         }
-                                    }
-                                    
-                                    // Obtener información del sistema
-                                    if (!empty($sistemas)) {
-                                        foreach ($sistemas as $sistema) {
-                                            if ($sistema['producto_id'] == $producto['id']) {
-                                                $sistemaProducto = $sistema;
-                                                break;
+                                        
+                                        // Obtener información del sistema
+                                        if (!empty($sistemas)) {
+                                            foreach ($sistemas as $sistema) {
+                                                if ($sistema['producto_id'] == $producto['id']) {
+                                                    $sistemaProducto = $sistema;
+                                                    break;
+                                                }
                                             }
                                         }
-                                    }
-                                    ?>
-                                    
-                                    <?php if ($tienePruebaActiva && $sistemaProducto): ?>
-                                        <!-- Botón Entrar para productos con prueba activa -->
-                                        <a href="<?= base_url($sistemaProducto['ruta_login']) ?>"
-                                            class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
-                                            <i class="fas fa-sign-in-alt me-2"></i> Entrar al Sistema
-                                        </a>
-                                    <?php else: ?>
-                                        <!-- Botones normales para productos sin prueba activa -->
-                                        <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
-                                            class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
-                                            <i class="fas fa-rocket me-2"></i> Prueba Gratis
-                                        </a>
-                                        <div class="btn-group-actions">
-                                            <a href="<?= base_url('compra/' . $producto['id']) ?>" class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-shopping-cart me-2"></i> Comprar
+                                        ?>
+                                        
+                                        <?php if ($tienePruebaActiva && $sistemaProducto): ?>
+                                            <!-- Botón Entrar para productos con prueba activa -->
+                                            <a href="<?= base_url($sistemaProducto['ruta_login']) ?>"
+                                                class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
+                                                <i class="fas fa-sign-in-alt me-2"></i> Entrar al Sistema
                                             </a>
-                                            <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
-                                                class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-info-circle me-2"></i> Detalles
+                                        <?php else: ?>
+                                            <!-- Botones normales para productos sin prueba activa -->
+                                            <a href="<?= base_url('prueba-gratis/' . $producto['id']) ?>"
+                                                class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
+                                                <i class="fas fa-rocket me-2"></i> Prueba Gratis
                                             </a>
-                                        </div>
-                                    <?php endif; ?>
+                                            <div class="btn-group-actions">
+                                                <a href="<?= base_url('compra/' . $producto['id']) ?>" class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                                    <i class="fas fa-shopping-cart me-2"></i> Alquilar
+                                                </a>
+                                                <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
+                                                    class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                                    <i class="fas fa-info-circle me-2"></i> Detalles
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            
+            <!-- Sección de Software de Venta -->
+            <?php if (!empty($productosVenta)): ?>
+                <div class="col-12 mt-5">
+                    <div class="mb-4">
+                        <h2 class="h3 text-danger fw-bold mb-2">
+                            <i class="fas fa-shopping-cart me-2"></i>Software de Venta
+                        </h2>
+                        <p class="text-muted">Licencias permanentes con pago único</p>
+                    </div>
                 </div>
-            <?php endforeach; ?>
+                
+                <?php foreach ($productosVenta as $producto): ?>
+                    <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <?php if (!empty($producto['imagen_principal'])): ?>
+                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
+                                        alt="<?= $producto['nombre'] ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                                <?php else: ?>
+                                    <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
+                                <?php endif; ?>
+                                <?php if ($producto['mas_vendido']): ?>
+                                    <span class="product-badge">Más Vendido</span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
+                                <h3 class="product-name"><?= $producto['nombre'] ?></h3>
+                                <p class="product-description">
+                                    <?= $producto['descripcion'] ?>
+                                </p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-crown"></i> Licencia</span>
+                                    <?php if ($producto['precio_oferta']): ?>
+                                        <span class="feature-tag"><i class="fas fa-tag"></i> Oferta</span>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="product-price">
+                                        <?php if ($producto['precio_oferta']): ?>
+                                            <span
+                                                style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$<?= number_format($producto['precio'], 0, ',', '.') ?></span>
+                                            $<?= number_format($producto['precio_oferta'], 0, ',', '.') ?><span class="price-period"> único</span>
+                                        <?php else: ?>
+                                            $<?= number_format($producto['precio'], 0, ',', '.') ?><span class="price-period"> único</span>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <a href="<?= base_url('compra/' . $producto['id']) ?>"
+                                            class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-shopping-cart me-2"></i> Comprar Licencia
+                                        </a>
+                                        <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
+                                            class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-info-circle me-2"></i> Ver Detalles
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            
+            <!-- Sección de Software Hecho a Medida -->
+            <?php if (!empty($productosAMedida)): ?>
+                <div class="col-12 mt-5">
+                    <div class="mb-4">
+                        <h2 class="h3 text-danger fw-bold mb-2">
+                            <i class="fas fa-cogs me-2"></i>Software Hecho a Medida
+                        </h2>
+                        <p class="text-muted">Soluciones personalizadas para tu negocio</p>
+                    </div>
+                </div>
+                
+                <?php foreach ($productosAMedida as $producto): ?>
+                    <div class="col-lg-4 col-md-6 product-item" data-category="<?= $producto['categoria_id'] ?>">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <?php if (!empty($producto['imagen_principal'])): ?>
+                                    <img src="<?= base_url('public/assets/img/productos/' . $producto['imagen_principal']) ?>"
+                                        alt="<?= $producto['nombre'] ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                                <?php else: ?>
+                                    <i class="fas fa-box fa-5x text-secondary opacity-50"></i>
+                                <?php endif; ?>
+                                <?php if ($producto['mas_vendido']): ?>
+                                    <span class="product-badge">Más Vendido</span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category"><?= $producto['categoria_nombre'] ?? 'Sin categoría' ?></div>
+                                <h3 class="product-name"><?= $producto['nombre'] ?></h3>
+                                <p class="product-description">
+                                    <?= $producto['descripcion'] ?>
+                                </p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-cogs"></i> A Medida</span>
+                                    <span class="feature-tag"><i class="fas fa-handshake"></i> Personalizado</span>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="product-price">
+                                        <span class="text-danger fw-bold">Cotización</span>
+                                        <span class="price-period">personalizada</span>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <a href="<?= base_url('contacto') ?>"
+                                            class="btn-minimal btn-buy text-decoration-none d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-comments me-2"></i> Solicitar Cotización
+                                        </a>
+                                        <a href="<?= base_url('productos/detalle/' . $producto['id']) ?>"
+                                            class="btn-minimal btn-details text-decoration-none d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-info-circle me-2"></i> Ver Detalles
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         <?php else: ?>
             <div class="col-12 text-center py-5">
                 <div class="card border-0">

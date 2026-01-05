@@ -22,7 +22,8 @@ class ProductoModel extends Model
         'imagen_principal',
         'imagenes_adicionales',
         'stock',
-        'estado'
+        'estado',
+        'tipo_producto'
     ];
 
     protected $useTimestamps = true;

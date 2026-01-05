@@ -36,7 +36,7 @@ class Productos extends BaseController
         $sistemas = $sistemaModel->where('activo', 1)->findAll();
         
         $data = [
-            'title' => 'Productos - Leapcol',
+            'title' => 'Leapcol - Productos',
             'productos' => $this->productoModel->getProductosConCategoria(),
             'categorias' => $this->categoriaModel->getCategoriasActivas(),
             'pruebas_activas' => $pruebasActivas,
